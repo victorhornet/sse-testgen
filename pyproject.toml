@@ -1,0 +1,10 @@
+[project]
+name = "sse-project-2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "==3.10.12"
+dependencies = ["pyenergibridge", "pynguin==0.40.0"]
+
+[tool.uv.sources]
+pyenergibridge = { git = "https://github.com/luiscruz/pyEnergiBridge" }
