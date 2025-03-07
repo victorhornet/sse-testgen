@@ -1,4 +1,4 @@
-# SSE Project 1
+# SSE Project 2
 
 ## Installing Pynguin with Docker
 
