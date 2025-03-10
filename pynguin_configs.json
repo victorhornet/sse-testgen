@@ -1,0 +1,44 @@
+[
+    {
+        "name": "dynamosa-42",
+        "params": {
+            "seed": 42,
+            "algorithm": "DYNAMOSA"
+        }
+    },
+    {
+        "name": "mio-42",
+        "params": {
+            "seed": 42,
+            "algorithm": "MIO"
+        }
+    },
+    {
+        "name": "mosa-42",
+        "params": {
+            "seed": 42,
+            "algorithm": "MOSA"
+        }
+    },
+    {
+        "name": "dynamosa-1337",
+        "params": {
+            "seed": 1337,
+            "algorithm": "DYNAMOSA"
+        }
+    },
+    {
+        "name": "mio-1337",
+        "params": {
+            "seed": 1337,
+            "algorithm": "MIO"
+        }
+    },
+    {
+        "name": "mosa-1337",
+        "params": {
+            "seed": 1337,
+            "algorithm": "MOSA"
+        }
+    }
+]

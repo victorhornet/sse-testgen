@@ -1,4 +1,4 @@
-("Configuration(project_path='/input', module_name='triangle', "
+("Configuration(project_path='/input', module_name='fib', "
  "test_case_output=TestCaseOutputConfiguration(output_path='/output', "
  "export_strategy=<ExportStrategy.PY_TEST: 'PY_TEST'>, "
  'max_length_test_case=2500, '
