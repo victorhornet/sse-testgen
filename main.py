@@ -1,6 +1,7 @@
 import json
 import os
 import subprocess
+import time
 from pyEnergiBridge.api import EnergiBridgeRunner
 
 
@@ -41,6 +42,9 @@ def main():
                 f,
                 indent=4,
             )
+
+        # TODO: idk if this is a good way to prevent the bias
+        time.sleep(5)
 
 
 def run_pynguin(module_name: str, params: dict):
