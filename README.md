@@ -13,7 +13,10 @@
 
 ## Running the experiment
 
-1. Create experiment configs in `pynguing_configs.jsonc`. For example:
+1. Install [EnergiBridge](https://github.com/tdurieux/EnergiBridge)
+2. Rename `pyenergibridge_config.json.example` to `pyenergibridge_config.json`: `mv pyenergibridge_config.json{.example,}`
+3. Update the binary path in `pyenergibridge_config.json`
+4. Create experiment configs in `pynguing_configs.jsonc`. For example:
 
 ```jsonc
  {
@@ -29,5 +32,5 @@
     },
 ```
 
-2. Activate python environment `source .venv/bin/activate`
-3. Run `python main.py`
+5. Activate python environment `source .venv/bin/activate`
+6. Run `python main.py`
