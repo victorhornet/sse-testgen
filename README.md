@@ -1,6 +1,8 @@
 # SSE Project 2
 
-## Installing Pynguin with Docker
+## Linux
+
+### Installing Pynguin with Docker
 
 1. Build the docker container: `docker build -t pynguin-cli .`
 2. Run with `./pynguin.sh`
@@ -34,3 +36,8 @@
 
 5. Activate python environment `source .venv/bin/activate`
 6. Run `python main.py`
+
+## Windows
+
+1. Build the docker container: `docker build -t pynguin-cli .`
+2. Run the docker container and the script by running `python main_no_energy.py`.
