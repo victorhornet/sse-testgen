@@ -13,12 +13,16 @@ def main():
         results_dir = os.path.join(os.getcwd(), "results", config["name"])
         os.makedirs(results_dir, exist_ok=True)
 
-        # Iterate over all Python examples
-        for example in os.listdir("examples"):
-            if not example.endswith(".py"):
-                continue
-            module_name = os.path.splitext(example)[0]
-            run_pynguin(module_name, config["params"])
+        # Only process files in examples/sty
+        sty_dir = os.path.join("examples", "sty")
+        for file_name in os.listdir(sty_dir):
+            if file_name.endswith(".py"):
+                # Remove the .py extension
+                base_name = os.path.splitext(file_name)[0]
+                # Use a dotted module name: sty.<filename>
+                module_name = f"sty.{base_name}"
+
+                run_pynguin(module_name, config["params"])
 
         # Pause briefly between runs to avoid bias
         time.sleep(5)

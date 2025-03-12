@@ -3,42 +3,48 @@
         "name": "dynamosa-42",
         "params": {
             "seed": 42,
-            "algorithm": "DYNAMOSA"
+            "algorithm": "DYNAMOSA",
+            "format_with_black": false
         }
     },
     {
         "name": "mio-42",
         "params": {
             "seed": 42,
-            "algorithm": "MIO"
+            "algorithm": "MIO",
+            "format_with_black": false
         }
     },
     {
         "name": "mosa-42",
         "params": {
             "seed": 42,
-            "algorithm": "MOSA"
+            "algorithm": "MOSA",
+            "format_with_black": false
         }
     },
     {
         "name": "dynamosa-1337",
         "params": {
             "seed": 1337,
-            "algorithm": "DYNAMOSA"
+            "algorithm": "DYNAMOSA",
+            "format_with_black": false
         }
     },
     {
         "name": "mio-1337",
         "params": {
             "seed": 1337,
-            "algorithm": "MIO"
+            "algorithm": "MIO",
+            "format_with_black": false
         }
     },
     {
         "name": "mosa-1337",
         "params": {
             "seed": 1337,
-            "algorithm": "MOSA"
+            "algorithm": "MOSA",
+            "format_with_black": false
         }
     }
 ]
