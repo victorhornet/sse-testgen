@@ -52,6 +52,20 @@ def main():
                         log_file_path=Path(module_name.replace(".", "/")) / f"{config['name']}.txt",
                     )
 
+        # # For checking individual packages without running the whole project
+        # sty_dir = os.path.join("examples", "isort")
+        # for file_name in os.listdir(sty_dir):
+        #     if file_name.endswith(".py") and file_name != "__init__.py":
+        #         # Remove the .py extension
+        #         base_name = os.path.splitext(file_name)[0]
+        #         # Use a dotted module name: sty.<filename>
+        #         module_name = f"isort.{base_name}"
+        #         run_pynguin(
+        #             module_name,
+        #             config["params"],
+        #             log_file_path=Path(module_name) / Path(f"{config['name']}.txt"),
+        #         )
+
         # energy, duration = energy_bridge_runner.stop()
         # print(f"Energy consumption (J): {energy}; Execution time (s): {duration}")
         # with open(results_dir / "energy.json", "w") as f:
