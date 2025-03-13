@@ -5,16 +5,23 @@ import time
 from typing import Optional
 from pyEnergiBridge.api import EnergiBridgeRunner
 
+if os.name == "java":
+    raise RuntimeError("This script is only supported on POSIX and Windows systems.")
+
+CWD = os.getcwd()
+WINDOWS_PYNGUIN_EXECUTABLE = os.path.join(CWD, "pynguin.bat")
+POSIX_PYNGUIN_EXECUTABLE = os.path.join(CWD, "pynguin.sh")
 
 PYNGUIN_EXECUTABLE = os.getenv(
-    "PYNGUIN_EXECUTABLE", os.path.join(os.getcwd(), "pynguin.sh")
+    "PYNGUIN_EXECUTABLE",
+    POSIX_PYNGUIN_EXECUTABLE if os.name == "posix" else WINDOWS_PYNGUIN_EXECUTABLE,
 )
 
 
 def main():
     energy_bridge_runner = EnergiBridgeRunner()
-    os.mkdir("logs")
-    os.mkdir("results")
+    os.makedirs("logs", exist_ok=True)
+    os.makedirs("results", exist_ok=True)
 
     with open("pynguin_configs.json", "r") as f:
         configs = json.load(f)

@@ -34,8 +34,9 @@
     },
 ```
 
-5. Activate python environment `source .venv/bin/activate`
-6. Run `python main.py`
+5. Run the `main.py` script:
+    - with `uv`: `uv run python main.py`
+    - from `.venv`: `.venv/bin/activate/python main.py`
 
 ## Windows
 
