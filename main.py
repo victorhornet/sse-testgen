@@ -2,6 +2,7 @@ import json
 import os
 import subprocess
 import time
+from typing import Optional
 from pyEnergiBridge.api import EnergiBridgeRunner
 
 
@@ -12,6 +13,8 @@ PYNGUIN_EXECUTABLE = os.getenv(
 
 def main():
     energy_bridge_runner = EnergiBridgeRunner()
+    os.mkdir("logs")
+    os.mkdir("results")
 
     with open("pynguin_configs.json", "r") as f:
         configs = json.load(f)
@@ -47,16 +50,32 @@ def main():
         time.sleep(5)
 
 
-def run_pynguin(module_name: str, params: dict):
-    subprocess.run(
-        [
-            PYNGUIN_EXECUTABLE,
-            "--module-name",
-            module_name,
-            *[f"--{k}={v}" for k, v in params.items()],
-        ],
-        check=True,
-    )
+def run_pynguin(
+    module_name: str, params: dict[str, str] = {}, log_file_name: Optional[str] = None
+):
+    """Runs Pynguin test generation for the given module name.
+
+    Args:
+        module_name: The name of the module to run Pynguin on.
+        params: The CLI parameters to pass to Pynguin. Example: {"seed": 42}.
+        log_file_name: The name of the log file to pipe the output to. Example: "triangle-mio-42". Default: <module_name>
+    """
+    if log_file_name:
+        log_file_name = log_file_name.replace(".log", "")
+    log_file_name = f"{log_file_name or module_name}.log"
+    log_file_path = os.path.join(os.getcwd(), "logs", log_file_name)
+    with open(log_file_path, "w") as log_file:
+        subprocess.run(
+            [
+                PYNGUIN_EXECUTABLE,
+                "--module-name",
+                module_name,
+                *[f"--{k}={v}" for k, v in params.items()],
+            ],
+            check=True,
+            stdout=log_file,
+            stderr=log_file,
+        )
 
 
 if __name__ == "__main__":
