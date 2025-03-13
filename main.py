@@ -75,6 +75,7 @@ def run_pynguin(
         subprocess.run(
             [
                 PYNGUIN_EXECUTABLE,
+                "--no-rich",
                 "--module-name",
                 module_name,
                 *[f"--{k}={v}" for k, v in params.items()],
