@@ -20,7 +20,7 @@ PYNGUIN_EXECUTABLE = os.getenv(
 
 
 def main():
-    energy_bridge_runner = EnergiBridgeRunner()
+    # energy_bridge_runner = EnergiBridgeRunner()
 
     with open("pynguin_configs.json", "r") as f:
         configs = json.load(f)
@@ -30,29 +30,39 @@ def main():
         if not results_dir.exists():
             results_dir.mkdir(parents=True)
 
-        energy_bridge_runner.start(results_file=results_dir / "results.csv")
+        # energy_bridge_runner.start(results_file=results_dir / "results.csv")
 
-        for example in os.listdir("examples"):
-            if not example.endswith(".py"):
-                continue
-            module_name = os.path.splitext(example)[0]
-            run_pynguin(
-                module_name,
-                config["params"],
-                log_file_path=Path(module_name) / Path(f"{config['name']}.txt"),
-            )
+        # Recursively traverse "examples" for all .py files
+        for root, _, files in os.walk("examples"):
+            for file_name in files:
+                if file_name.endswith(".py") and file_name != "__init__.py":
+                    # Build the full path to the file
+                    full_path = Path(root) / file_name
 
-        energy, duration = energy_bridge_runner.stop()
-        print(f"Energy consumption (J): {energy}; Execution time (s): {duration}")
-        with open(results_dir / "energy.json", "w") as f:
-            json.dump(
-                {
-                    "energy_consumption_joules": energy,
-                    "execution_time_seconds": duration,
-                },
-                f,
-                indent=4,
-            )
+                    # Convert the path under "examples" into a Python module name
+                    # e.g., "examples/dataclasses_json/sty/renderfunc.py" -> "dataclasses_json.sty.renderfunc"
+                    relative_path = full_path.relative_to("examples")
+                    # Strip off the ".py" suffix and replace path separators with dots
+                    module_name = str(relative_path.with_suffix("")).replace(os.path.sep, ".")
+
+                    run_pynguin(
+                        module_name,
+                        config["params"],
+                        # For the log file, we create a path under logs/<module_name>/configName.txt
+                        log_file_path=Path(module_name.replace(".", "/")) / f"{config['name']}.txt",
+                    )
+
+        # energy, duration = energy_bridge_runner.stop()
+        # print(f"Energy consumption (J): {energy}; Execution time (s): {duration}")
+        # with open(results_dir / "energy.json", "w") as f:
+        #     json.dump(
+        #         {
+        #             "energy_consumption_joules": energy,
+        #             "execution_time_seconds": duration,
+        #         },
+        #         f,
+        #         indent=4,
+        #     )
 
         # TODO: idk if this is a good way to prevent the bias
         time.sleep(5)
