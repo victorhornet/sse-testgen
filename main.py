@@ -35,15 +35,27 @@ def main():
         # Recursively traverse "examples" for all .py files
         for root, _, files in os.walk("examples"):
             if "tests" in Path(root).parts:
-                continue  # works
+                continue
             if "apimd" in Path(root).parts:
                 continue
             if "basic" in Path(root).parts:
                 continue
             if "codetiming_local" in Path(root).parts:
                 continue
+            if "docstring_parser_local" in Path(root).parts:
+                continue
+            if "flutes_local" in Path(root).parts:
+                continue # fix this
+            if "flutils_local" in Path(root).parts:
+                continue
+            if "isort" in Path(root).parts:
+                continue
+            if "mimesis_local" in Path(root).parts:
+                continue
+            if "pypara_local" in Path(root).parts:
+                continue
             for file_name in files:
-                if file_name.endswith(".py") and file_name != "__init__.py" and file_name != "setup.py" and file_name != "__main__.py" and file_name != "launcher.py":
+                if file_name.endswith(".py") and file_name != "__init__.py" and file_name != "setup.py" and file_name != "__main__.py" and file_name != "launcher.py" and file_name != "conf.py":
                     # Build the full path to the file
                     full_path = Path(root) / file_name
 
@@ -103,20 +115,25 @@ def run_pynguin(
     log_file_path = Path.cwd() / "logs" / (log_file_path or f"{module_name}.txt")
     log_file_path.parent.mkdir(parents=True, exist_ok=True)
     print(f"Running Pynguin on {module_name} with params {params}")
-    with open(log_file_path, "w") as log_file:
-        subprocess.run(
-            [
-                PYNGUIN_EXECUTABLE,
-                "--no-rich",
-                "--module-name",
-                module_name,
-                *[f"--{k}={v}" for k, v in params.items()],
-            ],
-            check=True,
-            text=True,
-            stdout=log_file,
-        )
+    try:
+        with open(log_file_path, "w") as log_file:
+            subprocess.run(
+                [
+                    PYNGUIN_EXECUTABLE,
+                    "--no-rich",
+                    "--module-name",
+                    module_name,
+                    *[f"--{k}={v}" for k, v in params.items()],
+                ],
+                check=True,
+                text=True,
+                stdout=log_file,
+            )
+    except subprocess.CalledProcessError as e:
+        print(f"Skipping module {module_name} due to error: {e}")
 
+    #print a newline for better readability
+    print()
 
 if __name__ == "__main__":
     main()
