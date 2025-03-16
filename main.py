@@ -35,7 +35,7 @@ def main():
         # Recursively traverse "examples" for all .py files
         for root, _, files in os.walk("examples"):
             for file_name in files:
-                if file_name.endswith(".py") and file_name != "__init__.py":
+                if file_name.endswith(".py") and file_name != "__init__.py" and file_name != "setup.py" and file_name != "__main__.py" and file_name != "launcher.py":
                     # Build the full path to the file
                     full_path = Path(root) / file_name
 
