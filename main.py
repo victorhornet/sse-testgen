@@ -36,24 +36,6 @@ def main():
         for root, _, files in os.walk("examples"):
             if "tests" in Path(root).parts:
                 continue
-            if "apimd" in Path(root).parts:
-                continue
-            if "basic" in Path(root).parts:
-                continue
-            if "codetiming_local" in Path(root).parts:
-                continue
-            if "docstring_parser_local" in Path(root).parts:
-                continue
-            if "flutes_local" in Path(root).parts:
-                continue # fix this
-            if "flutils_local" in Path(root).parts:
-                continue
-            if "isort" in Path(root).parts:
-                continue
-            if "mimesis_local" in Path(root).parts:
-                continue
-            if "pypara_local" in Path(root).parts:
-                continue
             for file_name in files:
                 if file_name.endswith(".py") and file_name != "__init__.py" and file_name != "setup.py" and file_name != "__main__.py" and file_name != "launcher.py" and file_name != "conf.py":
                     # Build the full path to the file

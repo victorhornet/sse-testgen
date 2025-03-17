@@ -42,3 +42,5 @@
 
 1. Build the docker container: `docker build -t pynguin-cli .`
 2. Run the docker container and the script by running `python main_no_energy.py`.
+
+If you get an error aboout "bash/r", run `dos2unix pynguin-docker.sh`.

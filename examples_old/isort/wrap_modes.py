@@ -3,8 +3,6 @@ import enum
 from inspect import signature
 from typing import Any, Callable, Dict, List
 
-import isort.comments
-
 _wrap_modes: Dict[str, Callable[[Any], str]] = {}
 
 
@@ -50,7 +48,7 @@ def grid(**interface):
     interface["statement"] += "(" + interface["imports"].pop(0)
     while interface["imports"]:
         next_import = interface["imports"].pop(0)
-        next_statement = isort.comments.add_to_line(
+        next_statement = comments.add_to_line(
             interface["comments"],
             interface["statement"] + ", " + next_import,
             removed=interface["remove_comments"],
@@ -69,13 +67,13 @@ def grid(**interface):
                     lines[-1] = new_line
             next_import = interface["line_separator"].join(lines)
             interface["statement"] = (
-                isort.comments.add_to_line(
+                    comments.add_to_line(
                     interface["comments"],
                     f"{interface['statement']},",
                     removed=interface["remove_comments"],
                     comment_prefix=interface["comment_prefix"],
                 )
-                + f"{interface['line_separator']}{next_import}"
+                    + f"{interface['line_separator']}{next_import}"
             )
             interface["comments"] = []
         else:
@@ -89,14 +87,14 @@ def vertical(**interface):
         return ""
 
     first_import = (
-        isort.comments.add_to_line(
+            comments.add_to_line(
             interface["comments"],
             interface["imports"].pop(0) + ",",
             removed=interface["remove_comments"],
             comment_prefix=interface["comment_prefix"],
         )
-        + interface["line_separator"]
-        + interface["white_space"]
+            + interface["line_separator"]
+            + interface["white_space"]
     )
 
     _imports = ("," + interface["line_separator"] + interface["white_space"]).join(
@@ -125,19 +123,19 @@ def _hanging_indent_common(use_parentheses=False, **interface):
     # Check for first import
     if len(next_statement) > line_length_limit:
         next_statement = (
-            isort.comments.add_to_line(
+                comments.add_to_line(
                 interface["comments"],
                 end_line(interface["statement"]),
                 removed=interface["remove_comments"],
                 comment_prefix=interface["comment_prefix"],
             )
-            + f"{interface['line_separator']}{interface['indent']}{next_import}"
+                + f"{interface['line_separator']}{interface['indent']}{next_import}"
         )
         interface["comments"] = []
     interface["statement"] = next_statement
     while interface["imports"]:
         next_import = interface["imports"].pop(0)
-        next_statement = isort.comments.add_to_line(
+        next_statement = comments.add_to_line(
             interface["comments"],
             interface["statement"] + ", " + next_import,
             removed=interface["remove_comments"],
@@ -146,13 +144,13 @@ def _hanging_indent_common(use_parentheses=False, **interface):
         current_line = next_statement.split(interface["line_separator"])[-1]
         if len(current_line) > line_length_limit:
             next_statement = (
-                isort.comments.add_to_line(
+                    comments.add_to_line(
                     interface["comments"],
                     end_line(interface["statement"] + ","),
                     removed=interface["remove_comments"],
                     comment_prefix=interface["comment_prefix"],
                 )
-                + f"{interface['line_separator']}{interface['indent']}{next_import}"
+                    + f"{interface['line_separator']}{interface['indent']}{next_import}"
             )
             interface["comments"] = []
         interface["statement"] = next_statement
@@ -168,7 +166,7 @@ def hanging_indent(**interface):
 
 @_wrap_mode
 def vertical_hanging_indent(**interface):
-    _line_with_comments = isort.comments.add_to_line(
+    _line_with_comments = comments.add_to_line(
         interface["comments"],
         "",
         removed=interface["remove_comments"],
@@ -187,15 +185,15 @@ def _vertical_grid_common(need_trailing_char: bool, **interface):
         return ""
 
     interface["statement"] += (
-        isort.comments.add_to_line(
+            comments.add_to_line(
             interface["comments"],
             "(",
             removed=interface["remove_comments"],
             comment_prefix=interface["comment_prefix"],
         )
-        + interface["line_separator"]
-        + interface["indent"]
-        + interface["imports"].pop(0)
+            + interface["line_separator"]
+            + interface["indent"]
+            + interface["imports"].pop(0)
     )
     while interface["imports"]:
         next_import = interface["imports"].pop(0)
@@ -277,7 +275,7 @@ def vertical_prefix_from_module_import(**interface):
     interface["statement"] += interface["imports"].pop(0)
     while interface["imports"]:
         next_import = interface["imports"].pop(0)
-        next_statement = isort.comments.add_to_line(
+        next_statement = comments.add_to_line(
             interface["comments"],
             interface["statement"] + ", " + next_import,
             removed=interface["remove_comments"],
@@ -288,13 +286,13 @@ def vertical_prefix_from_module_import(**interface):
             > interface["line_length"]
         ):
             next_statement = (
-                isort.comments.add_to_line(
+                    comments.add_to_line(
                     interface["comments"],
                     f"{interface['statement']}",
                     removed=interface["remove_comments"],
                     comment_prefix=interface["comment_prefix"],
                 )
-                + f"{interface['line_separator']}{prefix_statement}{next_import}"
+                    + f"{interface['line_separator']}{prefix_statement}{next_import}"
             )
             interface["comments"] = []
         interface["statement"] = next_statement
