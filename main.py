@@ -44,6 +44,8 @@ def main():
                 continue
             project_path = Path("examples") / project_name
             for root, _, files in os.walk(project_path):
+                if "tests" in Path(root).parts:
+                    continue
                 for file_name in files:
                     excluded_files = {
                         "__init__.py",
