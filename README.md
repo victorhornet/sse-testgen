@@ -5,20 +5,22 @@
 ### Installing Pynguin with Docker
 
 1. Build the docker container: `docker build -t pynguin-cli .`
-2. Run with `./pynguin.sh`
+2. Use `./pynguin.sh` everywhere instead of the normal `pynguin` command
 
-## Development setup w/uv
+3. In case of write permission errors, give permissions to the Docker `appuser`: `sudo chown -R 10001:10001 ./tests/`
+
+### Development setup w/uv
 
 1. Generate a venv: `uv venv --seed`
 2. Sync dependencies: `uv sync`
 3. Freeze dependencies when done: `uv pip freeze > requirements.txt`
 
-## Running the experiment
+### Running the experiment
 
 1. Install [EnergiBridge](https://github.com/tdurieux/EnergiBridge)
 2. Rename `pyenergibridge_config.json.example` to `pyenergibridge_config.json`: `mv pyenergibridge_config.json{.example,}`
 3. Update the binary path in `pyenergibridge_config.json`
-4. Create experiment configs in `pynguing_configs.jsonc`. For example:
+4. Create experiment configs in `pynguing_configs.json`. For example:
 
 ```jsonc
  {

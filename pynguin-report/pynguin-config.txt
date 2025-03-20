@@ -1,4 +1,5 @@
-("Configuration(project_path='/input', module_name='sty.rendertype', "
+("Configuration(project_path='/input/codetiming_local', "
+ "module_name='codetiming._timers', "
  "test_case_output=TestCaseOutputConfiguration(output_path='/output', "
  "export_strategy=<ExportStrategy.PY_TEST: 'PY_TEST'>, "
  'max_length_test_case=2500, '
@@ -6,8 +7,8 @@
  "'MUTATION_ANALYSIS'>, allow_stale_assertions=False, "
  'mutation_strategy=<MutationStrategy.FIRST_ORDER_MUTANTS: '
  "'FIRST_ORDER_MUTANTS'>, mutation_order=1, post_process=True, "
- 'float_precision=0.01, format_with_black=False), algorithm=<Algorithm.MOSA: '
- "'MOSA'>, "
+ 'float_precision=0.01, format_with_black=True), '
+ "algorithm=<Algorithm.DYNAMOSA: 'DYNAMOSA'>, "
  "statistics_output=StatisticsOutputConfiguration(report_dir='pynguin-report', "
  "statistics_backend=<StatisticsBackend.CSV: 'CSV'>, "
  'timeline_interval=1000000000, timeline_interpolation=True, '
@@ -20,10 +21,11 @@
  'maximum_test_execution_timeout=5, maximum_coverage=100, '
  'maximum_coverage_plateau=-1, minimum_coverage=100, '
  'minimum_plateau_iterations=-1, test_execution_time_per_statement=1), '
- 'seeding=SeedingConfiguration(seed=1337, constant_seeding=True, '
- "initial_population_seeding=False, initial_population_data='', "
- 'seeded_testcases_reuse_probability=0.9, initial_population_mutations=0, '
- 'dynamic_constant_seeding=True, seeded_primitives_reuse_probability=0.2, '
+ 'seeding=SeedingConfiguration(seed=1742471082551643998, '
+ 'constant_seeding=True, initial_population_seeding=False, '
+ "initial_population_data='', seeded_testcases_reuse_probability=0.9, "
+ 'initial_population_mutations=0, dynamic_constant_seeding=True, '
+ 'seeded_primitives_reuse_probability=0.2, '
  'seeded_dynamic_values_reuse_probability=0.6, seed_from_archive=False, '
  'seed_from_archive_probability=0.2, seed_from_archive_mutations=3, '
  'max_dynamic_length=1000, max_dynamic_pool_size=50), '

@@ -33,26 +33,42 @@ def main():
         # energy_bridge_runner.start(results_file=results_dir / "results.csv")
 
         # Recursively traverse "examples" for all .py files
-        for root, _, files in os.walk("examples"):
-            if "tests" in Path(root).parts:
+        for project_name in os.listdir("examples"):
+            excluded_projects = {
+                "tests",
+            }
+            if project_name in excluded_projects:
                 continue
-            for file_name in files:
-                if file_name.endswith(".py") and file_name != "__init__.py" and file_name != "setup.py" and file_name != "__main__.py" and file_name != "launcher.py" and file_name != "conf.py":
-                    # Build the full path to the file
-                    full_path = Path(root) / file_name
+            allowed_projects = {"codetiming_local"}
+            if len(allowed_projects) > 0 and project_name not in allowed_projects:
+                continue
+            project_path = Path("examples") / project_name
+            for root, _, files in os.walk(project_path):
+                for file_name in files:
+                    excluded_files = {
+                        "__init__.py",
+                        "setup.py",
+                        "__main__.py",
+                        "launcher.py",
+                        "conf.py",
+                    }
+                    if file_name.endswith(".py") and file_name not in excluded_files:
+                        full_path = Path(root) / file_name
 
-                    # Convert the path under "examples" into a Python module name
-                    # e.g., "examples/dataclasses_json/sty/renderfunc.py" -> "dataclasses_json.sty.renderfunc"
-                    relative_path = full_path.relative_to("examples")
-                    # Strip off the ".py" suffix and replace path separators with dots
-                    module_name = str(relative_path.with_suffix("")).replace(os.path.sep, ".")
-
-                    run_pynguin(
-                        module_name,
-                        config["params"],
-                        # For the log file, we create a path under logs/<module_name>/configName.txt
-                        log_file_path=Path(module_name.replace(".", "/")) / f"{config['name']}.txt",
-                    )
+                        # Convert the path under "examples" into a Python module name
+                        # e.g., "examples/dataclasses_json/sty/renderfunc.py" -> "dataclasses_json.sty.renderfunc"
+                        relative_path = full_path.relative_to(project_path)
+                        module_name = str(relative_path.with_suffix("")).replace(
+                            os.path.sep, "."
+                        )
+                        run_pynguin(
+                            project_name=project_name,
+                            module_name=module_name,
+                            params=config["params"],
+                            log_file_path=project_name
+                            / Path(module_name.replace(".", "/"))
+                            / f"{config['name']}.txt",
+                        )
 
         # # For checking individual packages without running the whole project
         # sty_dir = os.path.join("examples", "isort")
@@ -85,16 +101,22 @@ def main():
 
 
 def run_pynguin(
-    module_name: str, params: dict[str, str] = {}, log_file_path: Optional[Path] = None
+    project_name: str,
+    module_name: str,
+    params: dict[str, str] = {},
+    log_file_path: Optional[Path] = None,
 ):
     """Runs Pynguin test generation for the given module name.
 
     Args:
+        project_name: The name of the project to run Pynguin on, relative to the `/examples` directory. Example: `codetiming_local`
         module_name: The name of the module to run Pynguin on.
         params: The CLI parameters to pass to Pynguin. Example: {"seed": 42}.
-        log_file_path: The path to the log file to pipe the output to. Example: "triangle/mio-42.txt". Default: <module_name>.txt
+        log_file_path: The path to the log file to pipe the output to. Example: "codetiming_local/codetiming/_timers/mio-42.txt". Default: <project_path>/<module_name>.txt
     """
-    log_file_path = Path.cwd() / "logs" / (log_file_path or f"{module_name}.txt")
+    log_file_path = (
+        Path.cwd() / "logs" / (log_file_path or f"{project_name}/{module_name}.txt")
+    )
     log_file_path.parent.mkdir(parents=True, exist_ok=True)
     print(f"Running Pynguin on {module_name} with params {params}")
     try:
@@ -103,6 +125,8 @@ def run_pynguin(
                 [
                     PYNGUIN_EXECUTABLE,
                     "--no-rich",
+                    "--project-path",
+                    Path("/input") / project_name,
                     "--module-name",
                     module_name,
                     *[f"--{k}={v}" for k, v in params.items()],
@@ -114,8 +138,9 @@ def run_pynguin(
     except subprocess.CalledProcessError as e:
         print(f"Skipping module {module_name} due to error: {e}")
 
-    #print a newline for better readability
+    # print a newline for better readability
     print()
+
 
 if __name__ == "__main__":
     main()
