@@ -1,5 +1,6 @@
 import json
 import os
+import argparse
 from pathlib import Path
 import subprocess
 import time
@@ -20,6 +21,24 @@ PYNGUIN_EXECUTABLE = os.getenv(
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        description="Run Pynguin test generation with various configurations"
+    )
+    parser.add_argument(
+        "--allowed-projects",
+        type=str,
+        help="Comma-separated list of allowed projects",
+    )
+
+    args = parser.parse_args()
+
+    allowed_projects: set[str] = (
+        set(args.allowed_projects.split(",")) if args.allowed_projects else set()
+    )
+    excluded_projects = {
+        "tests",
+    }
+
     # energy_bridge_runner = EnergiBridgeRunner()
 
     with open("pynguin_configs.json", "r") as f:
@@ -34,12 +53,8 @@ def main():
 
         # Recursively traverse "examples" for all .py files
         for project_name in os.listdir("examples"):
-            excluded_projects = {
-                "tests",
-            }
             if project_name in excluded_projects:
                 continue
-            allowed_projects = {"codetiming_local"}
             if len(allowed_projects) > 0 and project_name not in allowed_projects:
                 continue
             project_path = Path("examples") / project_name
