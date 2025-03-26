@@ -1,5 +1,5 @@
 ("Configuration(project_path='/input/codetiming_local', "
- "module_name='codetiming._timer', "
+ "module_name='codetiming._timers', "
  "test_case_output=TestCaseOutputConfiguration(output_path='/output', "
  "export_strategy=<ExportStrategy.PY_TEST: 'PY_TEST'>, "
  'max_length_test_case=2500, '
@@ -15,7 +15,7 @@
  "coverage_metrics=[<CoverageMetric.BRANCH: 'BRANCH'>], "
  "output_variables=[TargetModule, Coverage], configuration_id='', run_id='', "
  "project_name='', create_coverage_report=False, type_guess_top_n=10), "
- 'stopping=StoppingConfiguration(maximum_search_time=-1, '
+ 'stopping=StoppingConfiguration(maximum_search_time=10, '
  'maximum_test_executions=-1, maximum_statement_executions=-1, '
  'maximum_slicing_time=600, maximum_iterations=-1, '
  'maximum_test_execution_timeout=5, maximum_coverage=100, '

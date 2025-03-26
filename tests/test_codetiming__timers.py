@@ -77,28 +77,23 @@ def test_case_10():
     with pytest.raises(KeyError):
         timers_0.stdev(str_0)
 
+@pytest.mark.xfail(strict=True)
 def test_case_11():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
     str_0 = '\x0cn}:<oR7x$\tL;|X^'
-    int_0 = -47
-    none_type_0 = timers_0.add(str_0, int_0)
-    assert len(timers_0) == 1
-    float_0 = timers_0.stdev(str_0)
-    float_1 = timers_0.min(str_0)
-    assert float_1 == -47
-
-def test_case_12():
-    timers_0 = module_0.Timers()
-    assert len(timers_0) == 0
-    str_0 = '\x0cn}:<oR7x$\tL;|X^'
-    bool_0 = False
+    bool_0 = True
     none_type_0 = timers_0.add(str_0, bool_0)
     assert len(timers_0) == 1
-    float_0 = timers_0.median(str_0)
-    assert float_0 is False
+    float_0 = timers_0.stdev(str_0)
+    float_1 = timers_0.mean(str_0)
+    assert float_1 == 1
+    float_2 = timers_0.median(str_0)
+    assert float_2 is True
+    timers_0.total(bool_0)
 
-def test_case_13():
+@pytest.mark.xfail(strict=True)
+def test_case_12():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
     str_0 = '\x0cn}:<oR7x$\tL;|X^'
@@ -107,41 +102,21 @@ def test_case_13():
     assert len(timers_0) == 1
     float_0 = timers_0.mean(str_0)
     assert float_0 == 0
-
-def test_case_14():
-    timers_0 = module_0.Timers()
-    assert len(timers_0) == 0
-    str_0 = '\x0cn}:<oR7x$\tL;|X^'
-    int_0 = -30
-    none_type_0 = timers_0.add(str_0, int_0)
-    assert len(timers_0) == 1
-    float_0 = timers_0.min(str_0)
-    assert float_0 == -30
+    float_1 = timers_0.median(str_0)
+    assert float_1 is False
+    timers_0.total(bool_0)
 
 @pytest.mark.xfail(strict=True)
-def test_case_15():
+def test_case_13():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
     str_0 = '\x0cn}:<oR7x$\tL;|X^'
-    int_0 = -47
-    none_type_0 = timers_0.add(str_0, int_0)
-    assert len(timers_0) == 1
-    bool_0 = True
-    none_type_1 = timers_0.add(str_0, bool_0)
-    float_0 = timers_0.stdev(str_0)
-    assert float_0 == pytest.approx(33.94112549695428, abs=0.01, rel=0.01)
-    float_1 = timers_0.mean(str_0)
-    assert float_1 == -23
-    float_2 = timers_0.min(str_0)
-    assert float_2 == -47
-    module_1.variance(bool_0)
-
-def test_case_16():
-    timers_0 = module_0.Timers()
-    assert len(timers_0) == 0
-    str_0 = '\x0c}<oR7x$\t;|X^'
     bool_0 = True
     none_type_0 = timers_0.add(str_0, bool_0)
     assert len(timers_0) == 1
-    float_0 = timers_0.max(str_0)
-    assert float_0 is True
+    float_0 = timers_0.stdev(str_0)
+    float_1 = timers_0.mean(str_0)
+    assert float_1 == 1
+    float_2 = timers_0.min(str_0)
+    assert float_2 is True
+    module_1.variance(bool_0)

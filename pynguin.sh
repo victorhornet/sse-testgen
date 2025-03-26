@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 docker run \
     -it \
@@ -7,6 +7,7 @@ docker run \
     -v $(pwd)/tests:/output \
     -v $(pwd)/pynguin-report:/app/pynguin-report \
     pynguin-cli \
+    --maximum-search-time 10 \
     --project-path "/input" \
     --output-path "/output" \
     --verbose \

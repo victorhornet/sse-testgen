@@ -39,7 +39,7 @@ def main():
         "tests",
     }
 
-    # energy_bridge_runner = EnergiBridgeRunner()
+    energy_bridge_runner = EnergiBridgeRunner()
 
     with open("pynguin_configs.json", "r") as f:
         configs = json.load(f)
@@ -49,7 +49,7 @@ def main():
         if not results_dir.exists():
             results_dir.mkdir(parents=True)
 
-        # energy_bridge_runner.start(results_file=results_dir / "results.csv")
+        energy_bridge_runner.start(results_file=results_dir / "usage_metrics.csv")
 
         # Recursively traverse "examples" for all .py files
         for project_name in os.listdir("examples"):
@@ -101,17 +101,20 @@ def main():
         #             log_file_path=Path(module_name) / Path(f"{config['name']}.txt"),
         #         )
 
-        # energy, duration = energy_bridge_runner.stop()
-        # print(f"Energy consumption (J): {energy}; Execution time (s): {duration}")
-        # with open(results_dir / "energy.json", "w") as f:
-        #     json.dump(
-        #         {
-        #             "energy_consumption_joules": energy,
-        #             "execution_time_seconds": duration,
-        #         },
-        #         f,
-        #         indent=4,
-        #     )
+        energy, duration = energy_bridge_runner.stop()
+        if energy is None or duration is None:
+            raise RuntimeError("Energy or duration is None")
+        print(f"Energy consumption (J): {energy}; Execution time (s): {duration}")
+        with open(results_dir / "energy.json", "w") as f:
+            json.dump(
+                {
+                    "energy_consumption_joules": energy,
+                    "execution_time_seconds": duration,
+                    "watts": energy / duration,
+                },
+                f,
+                indent=4,
+            )
 
         # TODO: idk if this is a good way to prevent the bias
         time.sleep(5)
