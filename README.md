@@ -37,8 +37,8 @@
 ```
 
 5. Run the `main.py` script:
-    - with `uv`: `uv run python main.py --allowed-projects codetiming_local,docstring_parser_local`
-    - from `.venv`: `.venv/bin/activate/python main.py --allowed-projects codetiming_local,docstring_parser_local`
+    - with `uv`: `uv run python main.py --allowed-projects codetiming_local,docstring_parser_local --iterations 5`
+    - from `.venv`: `.venv/bin/activate/python main.py --allowed-projects codetiming_local,docstring_parser_local --iterations 5`
 
 ## Windows
 
