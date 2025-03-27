@@ -7,8 +7,8 @@ docker run \
     -v $(pwd)/tests:/output \
     -v $(pwd)/pynguin-report:/app/pynguin-report \
     pynguin-cli \
-    --maximum-search-time 1 \
     --maximum-iterations 1 \
+    --maximum-search-time 1 \
     --maximum-statement-executions 1 \
     --maximum-test-executions 1 \
     --project-path "/input" \

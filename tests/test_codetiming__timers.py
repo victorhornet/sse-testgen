@@ -6,46 +6,66 @@ import codetiming._timers as module_0
 def test_case_0():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    none_type_0 = timers_0.clear()
 
 @pytest.mark.xfail(strict=True)
 def test_case_1():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    none_type_0 = None
-    timers_0.min(none_type_0)
+    str_0 = 'Timer is running. Use .stop() to stop it'
+    timers_0.min(str_0)
 
-@pytest.mark.xfail(strict=True)
 def test_case_2():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    timers_0.add(timers_0, timers_0)
+    timers_1 = module_0.Timers()
+    assert len(timers_1) == 0
+    str_0 = 'sU|CK\x0c)B@v&'
+    with pytest.raises(KeyError):
+        timers_1.stdev(str_0)
 
+@pytest.mark.xfail(strict=True)
 def test_case_3():
+    bool_0 = True
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    none_type_0 = None
-    with pytest.raises(TypeError):
-        timers_0.__setitem__(timers_0, none_type_0)
+    none_type_0 = timers_0.clear()
+    none_type_1 = timers_0.clear()
+    timers_0.min(bool_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_4():
-    timers_0 = module_0.Timers()
-    assert len(timers_0) == 0
-    str_0 = '0s .KMP!3NtbR'
-    timers_0.total(str_0)
+    str_0 = '\nx)Z<~i_`\\2M-[&5'
+    dict_0 = {str_0: str_0}
+    module_0.Timers(**dict_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_5():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    none_type_0 = timers_0.clear()
-    str_0 = '&ub^Ud'
-    timers_0.mean(str_0)
+    str_0 = 'name'
+    timers_0.count(str_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_6():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    var_0 = timers_0.update(timers_0)
+    timers_0.total(timers_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_7():
+    timers_0 = module_0.Timers()
+    assert len(timers_0) == 0
+    str_0 = ''
+    timers_0.max(str_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_8():
+    timers_0 = module_0.Timers()
+    assert len(timers_0) == 0
+    timers_0.mean(timers_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_9():
+    timers_0 = module_0.Timers()
+    assert len(timers_0) == 0
     timers_0.median(timers_0)
