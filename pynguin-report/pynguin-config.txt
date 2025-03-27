@@ -1,5 +1,5 @@
-("Configuration(project_path='/input/docstring_parser_local', "
- "module_name='docstring_parser.common', "
+("Configuration(project_path='/input/codetiming_local', "
+ "module_name='codetiming._timer', "
  "test_case_output=TestCaseOutputConfiguration(output_path='/output', "
  "export_strategy=<ExportStrategy.PY_TEST: 'PY_TEST'>, "
  'max_length_test_case=2500, '
@@ -7,8 +7,8 @@
  "'MUTATION_ANALYSIS'>, allow_stale_assertions=False, "
  'mutation_strategy=<MutationStrategy.FIRST_ORDER_MUTANTS: '
  "'FIRST_ORDER_MUTANTS'>, mutation_order=1, post_process=True, "
- 'float_precision=0.01, format_with_black=False), '
- "algorithm=<Algorithm.DYNAMOSA: 'DYNAMOSA'>, "
+ 'float_precision=0.01, format_with_black=False), algorithm=<Algorithm.MOSA: '
+ "'MOSA'>, "
  "statistics_output=StatisticsOutputConfiguration(report_dir='pynguin-report', "
  "statistics_backend=<StatisticsBackend.CSV: 'CSV'>, "
  'timeline_interval=1000000000, timeline_interpolation=True, '

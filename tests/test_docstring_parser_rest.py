@@ -3,622 +3,100 @@
 import pytest
 import docstring_parser.rest as module_0
 import docstring_parser.common as module_1
-import inspect as module_2
-import token as module_3
-import tokenize as module_4
-import ast as module_5
-import re as module_6
+import ast as module_2
+import inspect as module_3
+import re as module_4
+import tokenize as module_5
 
 @pytest.mark.xfail(strict=True)
 def test_case_0():
-    str_0 = 'XMy>_'
+    str_0 = 'E\x0cPJsDU-M>Mi<z\r\tu'
     docstring_0 = module_0.parse(str_0)
     assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'XMy>_'
+    assert docstring_0.short_description == 'E\x0cPJsDU-M>Mi<z\r        u'
     assert docstring_0.long_description is None
     assert docstring_0.blank_after_short_description is False
     assert docstring_0.blank_after_long_description is False
     assert docstring_0.meta == []
     assert docstring_0.style == module_1.DocstringStyle.REST
-    str_1 = "hv\t*'x\t-"
-    str_2 = 'HeBTkW0}}x#\rm#d=C>#:'
-    docstring_1 = module_0.parse(str_2)
-    assert docstring_1.short_description == 'HeBTkW0}}x#\rm#d=C>#:'
-    docstring_2 = module_0.parse(str_1)
-    assert docstring_2.short_description == "hv      *'x     -"
-    str_3 = module_0.compose(docstring_0, str_0)
-    assert str_3 == 'XMy>_'
+    str_1 = module_0.compose(docstring_0, docstring_0, str_0)
+    assert str_1 == 'E\x0cPJsDU-M>Mi<z\r        u'
+    str_2 = module_0.compose(docstring_0, indent=str_0)
+    assert str_2 == 'E\x0cPJsDU-M>Mi<z\r        u'
+    str_3 = module_0.compose(docstring_0)
+    assert str_3 == 'E\x0cPJsDU-M>Mi<z\r        u'
     module_0.parse(docstring_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_1():
-    str_0 = 'Note'
-    var_0 = module_2.isfunction(str_0)
-    var_1 = var_0.__eq__(str_0)
-    var_1.delimit(str_0, str_0)
+    none_type_0 = None
+    module_0.compose(none_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_2():
-    str_0 = 'c6@(1b\nulQ!ZrP7lM'
-    docstring_0 = module_0.parse(str_0)
+    none_type_0 = None
+    docstring_0 = module_0.parse(none_type_0)
     assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'c6@(1b'
-    assert docstring_0.long_description == 'ulQ!ZrP7lM'
+    assert docstring_0.short_description is None
+    assert docstring_0.long_description is None
     assert docstring_0.blank_after_short_description is False
     assert docstring_0.blank_after_long_description is False
     assert docstring_0.meta == []
     assert docstring_0.style == module_1.DocstringStyle.REST
-    str_1 = 'w6b>Sz50G\x0bg>xk '
-    module_2.getouterframes(str_1)
+    module_0.parse(docstring_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_3():
-    str_0 = '+rX'
-    module_3.ISNONTERMINAL(str_0)
+    str_0 = "o|*LQltrv2,'In,"
+    module_0.compose(str_0)
 
-@pytest.mark.xfail(strict=True)
 def test_case_4():
-    none_type_0 = None
-    module_4.tokenize(none_type_0)
+    str_0 = "='xxwGm"
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == "='xxwGm"
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
 
 @pytest.mark.xfail(strict=True)
 def test_case_5():
-    float_0 = 727.48
-    var_0 = module_2.ismethod(float_0)
-    var_1 = var_0.__eq__(float_0)
-    var_1.isalpha()
+    none_type_0 = None
+    module_0.compose(none_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_6():
-    none_type_0 = None
-    str_0 = '3i:]U'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == '3i:]U'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    docstring_1 = module_0.parse(str_0)
-    assert docstring_1.short_description == '3i:]U'
-    docstring_0.insert(none_type_0, docstring_0)
+    str_0 = 'Nk `:R%RPd3zB)`cg \n'
+    module_0.compose(str_0, indent=str_0)
 
-@pytest.mark.xfail(strict=True)
 def test_case_7():
-    str_0 = "EkO; C.H#$'!{+CY2LG"
+    str_0 = '.:854\\6?'
     docstring_0 = module_0.parse(str_0)
     assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == "EkO; C.H#$'!{+CY2LG"
+    assert docstring_0.short_description == '.:854\\6?'
     assert docstring_0.long_description is None
     assert docstring_0.blank_after_short_description is False
     assert docstring_0.blank_after_long_description is False
     assert docstring_0.meta == []
     assert docstring_0.style == module_1.DocstringStyle.REST
-    module_5.copy_location(str_0, docstring_0)
+    str_1 = module_0.compose(docstring_0)
+    assert str_1 == '.:854\\6?'
+    str_2 = module_0.compose(docstring_0)
+    assert str_2 == '.:854\\6?'
+    none_type_0 = None
+    with pytest.raises(TypeError):
+        module_2.get_docstring(none_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_8():
-    str_0 = 'A'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'A'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    str_1 = "V&{K9+e7)#p,'jlF"
-    docstring_1 = module_0.parse(str_1)
-    assert docstring_1.short_description == "V&{K9+e7)#p,'jlF"
-    docstring_2 = module_0.parse(str_1)
-    assert docstring_2.short_description == "V&{K9+e7)#p,'jlF"
-    str_2 = module_0.compose(docstring_1)
-    assert str_2 == "V&{K9+e7)#p,'jlF"
-    str_3 = "S'MtvWIjzo}\re4[R;"
-    docstring_3 = module_0.parse(str_3)
-    assert docstring_3.short_description == "S'MtvWIjzo}\re4[R;"
-    docstring_4 = module_0.parse(str_2)
-    assert docstring_4.short_description == "V&{K9+e7)#p,'jlF"
-    module_2.getclasstree(str_2)
+    var_0 = module_3.stack()
+    var_0.__len__(var_0)
 
+@pytest.mark.xfail(strict=True)
 def test_case_9():
-    str_0 = '{qOu)F\x0cAMX\'@JDxK$"X'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == '{qOu)F\x0cAMX\'@JDxK$"X'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-
-@pytest.mark.xfail(strict=True)
-def test_case_10():
-    none_type_0 = None
-    docstring_0 = module_0.parse(none_type_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description is None
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    module_0.compose(none_type_0, indent=none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_11():
-    str_0 = 'dhC0OG<MGUGT@/'
-    var_0 = module_5.get_source_segment(str_0, str_0)
-    module_0.compose(var_0)
-
-def test_case_12():
-    none_type_0 = None
-    docstring_0 = module_0.parse(none_type_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description is None
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    with pytest.raises(TypeError):
-        module_2.getfullargspec(docstring_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_13():
-    str_0 = '\r'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description is None
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    module_0.parse(docstring_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_14():
-    str_0 = 'rog5S'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'rog5S'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    none_type_0 = None
-    docstring_1 = module_0.parse(none_type_0)
-    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_1.short_description is None
-    assert docstring_1.long_description is None
-    assert docstring_1.blank_after_short_description is False
-    assert docstring_1.blank_after_long_description is False
-    assert docstring_1.meta == []
-    assert docstring_1.style == module_1.DocstringStyle.REST
-    docstring_2 = module_0.parse(str_0)
-    assert docstring_2.short_description == 'rog5S'
-    none_type_1 = None
-    str_1 = '?m/1'
-    docstring_3 = module_0.parse(str_1)
-    assert docstring_3.short_description == '?m/1'
-    module_0.compose(none_type_1, docstring_2)
-
-@pytest.mark.xfail(strict=True)
-def test_case_15():
-    str_0 = 'jb\x0c$9}}cw?tWBxX'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'jb\x0c$9}}cw?tWBxX'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    docstring_1 = module_0.parse(str_0)
-    assert docstring_1.short_description == 'jb\x0c$9}}cw?tWBxX'
-    str_1 = 'g;'
-    docstring_2 = module_0.parse(str_1)
-    assert docstring_2.short_description == 'g;'
-    var_0 = module_2.isbuiltin(docstring_2)
-    var_0.update(docstring_1)
-
-@pytest.mark.xfail(strict=True)
-def test_case_16():
-    str_0 = 'Z!eQ'
-    module_0.compose(str_0, str_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_17():
-    none_type_0 = None
-    docstring_0 = module_0.parse(none_type_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description is None
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    var_0 = module_2.isasyncgen(none_type_0)
-    var_0.__copy__()
-
-@pytest.mark.xfail(strict=True)
-def test_case_18():
-    var_0 = module_6.purge()
-    module_0.compose(var_0, var_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_19():
-    str_0 = '1`xvAbP]\tH9)mYEJr'
-    module_4.tokenize(str_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_20():
-    str_0 = 'pi jY1mR"h=%'
-    var_0 = module_2.isroutine(str_0)
-    module_0.compose(str_0, var_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_21():
-    none_type_0 = None
-    module_0.compose(none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_22():
-    str_0 = '_FWvSP\x0c5: M}EO;'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == '_FWvSP\x0c5: M}EO;'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    none_type_0 = None
-    module_0.compose(none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_23():
-    str_0 = 'Gb6dRmk]A'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'Gb6dRmk]A'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    docstring_1 = module_0.parse(str_0)
-    assert docstring_1.short_description == 'Gb6dRmk]A'
-    bytes_0 = b'\xf3(`\x8ca\x0b\xc4+\xe9U\x90\xdf\xa8\xdc&)\xde%-'
-    docstring_2 = module_0.parse(str_0)
-    assert docstring_2.short_description == 'Gb6dRmk]A'
-    var_0 = module_2.isawaitable(bytes_0)
-    module_0.compose(bytes_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_24():
-    str_0 = 'I*>r1>p_Aw'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'I*>r1>p_Aw'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    none_type_0 = None
-    module_2.getgeneratorstate(none_type_0)
-
-def test_case_25():
-    str_0 = 'N;,Vpq^EC'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'N;,Vpq^EC'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    str_1 = '".'
-    str_2 = module_0.compose(docstring_0, indent=str_1)
-    assert str_2 == 'N;,Vpq^EC'
-
-@pytest.mark.xfail(strict=True)
-def test_case_26():
-    none_type_0 = None
-    module_2.walktree(none_type_0, none_type_0, none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_27():
-    str_0 = ";\rW5d 6'mk"
-    module_0.compose(str_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_28():
-    none_type_0 = None
-    str_0 = '\\I3bi'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == '\\I3bi'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    docstring_1 = module_0.parse(none_type_0)
-    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_1.short_description is None
-    assert docstring_1.long_description is None
-    assert docstring_1.blank_after_short_description is False
-    assert docstring_1.blank_after_long_description is False
-    assert docstring_1.meta == []
-    assert docstring_1.style == module_1.DocstringStyle.REST
-    docstring_2 = module_0.parse(none_type_0)
-    module_0.compose(str_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_29():
-    none_type_0 = None
-    docstring_0 = module_0.parse(none_type_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description is None
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    str_0 = '\x0bW]"fs|qoyA\t"'
-    docstring_1 = module_0.parse(str_0)
-    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_1.short_description == 'W]"fs|qoyA     "'
-    assert docstring_1.long_description is None
-    assert docstring_1.blank_after_short_description is False
-    assert docstring_1.blank_after_long_description is False
-    assert docstring_1.meta == []
-    assert docstring_1.style == module_1.DocstringStyle.REST
-    none_type_1 = None
-    module_5.parse(none_type_1, type_comments=none_type_1)
-
-@pytest.mark.xfail(strict=True)
-def test_case_30():
-    str_0 = '}!C<;K_]_]OCbgh1oe2'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == '}!C<;K_]_]OCbgh1oe2'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    none_type_0 = None
-    str_1 = 't|7&2S,E)8y?RYe'
-    str_2 = module_0.compose(docstring_0, indent=str_1)
-    assert str_2 == '}!C<;K_]_]OCbgh1oe2'
-    docstring_1 = module_0.parse(str_0)
-    assert docstring_1.short_description == '}!C<;K_]_]OCbgh1oe2'
-    module_2.walktree(none_type_0, none_type_0, none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_31():
-    str_0 = 'BRP^`)C}\tEI1z&;i'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'BRP^`)C}        EI1z&;i'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    docstring_1 = module_0.parse(str_0)
-    assert docstring_1.short_description == 'BRP^`)C}        EI1z&;i'
-    docstring_2 = module_0.parse(str_0)
-    assert docstring_2.short_description == 'BRP^`)C}        EI1z&;i'
-    none_type_0 = None
-    module_0.compose(none_type_0, indent=docstring_1)
-
-def test_case_32():
-    str_0 = 'Reference'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'Reference'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-
-@pytest.mark.xfail(strict=True)
-def test_case_33():
-    none_type_0 = None
-    docstring_0 = module_0.parse(none_type_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description is None
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    str_0 = 'title key type'
-    str_1 = module_0.compose(docstring_0)
-    assert str_1 == ''
-    docstring_1 = module_0.parse(str_0)
-    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_1.short_description == 'title key type'
-    assert docstring_1.long_description is None
-    assert docstring_1.blank_after_short_description is False
-    assert docstring_1.blank_after_long_description is False
-    assert docstring_1.meta == []
-    assert docstring_1.style == module_1.DocstringStyle.REST
-    var_0 = module_2.isroutine(none_type_0)
-    var_0.index(none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_34():
-    none_type_0 = None
-    module_2.signature(none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_35():
-    none_type_0 = None
-    module_6.template(none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_36():
-    none_type_0 = None
-    module_0.compose(none_type_0, indent=none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_37():
-    bool_0 = False
-    var_0 = module_2.iscoroutinefunction(bool_0)
-    module_0.compose(var_0, var_0, var_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_38():
-    none_type_0 = None
-    str_0 = 'value'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'value'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    str_1 = '"^\'$9lU\n$N*\x0c'
-    docstring_1 = module_0.parse(str_1)
-    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_1.short_description == '"^\'$9lU'
-    assert docstring_1.long_description == '$N*'
-    assert docstring_1.blank_after_short_description is False
-    assert docstring_1.blank_after_long_description is False
-    assert docstring_1.meta == []
-    assert docstring_1.style == module_1.DocstringStyle.REST
-    str_2 = 'Z7$S?6CeyKzI|'
-    docstring_2 = module_0.parse(none_type_0)
-    assert f'{type(docstring_2).__module__}.{type(docstring_2).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_2.short_description is None
-    assert docstring_2.long_description is None
-    assert docstring_2.blank_after_short_description is False
-    assert docstring_2.blank_after_long_description is False
-    assert docstring_2.meta == []
-    assert docstring_2.style == module_1.DocstringStyle.REST
-    module_0.compose(none_type_0, indent=str_2)
-
-def test_case_39():
-    str_0 = '11d( H{aphZ\r+UkDGZj'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == '11d( H{aphZ\r+UkDGZj'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    str_1 = module_0.compose(docstring_0)
-    assert str_1 == '11d( H{aphZ\r+UkDGZj'
-    with pytest.raises(TypeError):
-        module_2.getfile(docstring_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_40():
-    str_0 = 'Idy"[Lx|9'
-    none_type_0 = None
-    docstring_0 = module_0.parse(none_type_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description is None
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    docstring_1 = module_0.parse(str_0)
-    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_1.short_description == 'Idy"[Lx|9'
-    assert docstring_1.long_description is None
-    assert docstring_1.blank_after_short_description is False
-    assert docstring_1.blank_after_long_description is False
-    assert docstring_1.meta == []
-    assert docstring_1.style == module_1.DocstringStyle.REST
-    docstring_2 = module_0.parse(none_type_0)
-    str_1 = module_0.compose(docstring_0)
-    assert str_1 == ''
-    module_0.parse(docstring_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_41():
-    str_0 = '/MrIq'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == '/MrIq'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    str_1 = 'APQ<^gUK$<E'
-    docstring_1 = module_0.parse(str_1)
-    assert docstring_1.short_description == 'APQ<^gUK$<E'
-    str_2 = module_0.compose(docstring_1, docstring_1)
-    assert str_2 == 'APQ<^gUK$<E'
-    str_3 = module_0.compose(docstring_1, str_1, str_1)
-    assert str_3 == 'APQ<^gUK$<E'
-    none_type_0 = None
-    module_0.compose(none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_42():
-    none_type_0 = None
-    module_0.compose(none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_43():
-    str_0 = 'J"3v'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'J"3v'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-    str_1 = '1\\rXNo'
-    none_type_0 = None
-    docstring_1 = module_0.parse(none_type_0)
-    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_1.short_description is None
-    assert docstring_1.long_description is None
-    assert docstring_1.blank_after_short_description is False
-    assert docstring_1.blank_after_long_description is False
-    assert docstring_1.meta == []
-    assert docstring_1.style == module_1.DocstringStyle.REST
-    docstring_2 = module_0.parse(str_1)
-    assert docstring_2.short_description == '1\\rXNo'
-    module_0.compose(str_1, str_1)
-
-@pytest.mark.xfail(strict=True)
-def test_case_44():
-    none_type_0 = None
-    module_0.compose(none_type_0)
-
-def test_case_45():
-    none_type_0 = None
-    docstring_0 = module_0.parse(none_type_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description is None
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_1.DocstringStyle.REST
-
-@pytest.mark.xfail(strict=True)
-def test_case_46():
-    none_type_0 = None
-    var_0 = module_2.isasyncgenfunction(none_type_0)
+    var_0 = module_4.purge()
     docstring_0 = module_0.parse(var_0)
     assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
     assert docstring_0.short_description is None
@@ -627,52 +105,487 @@ def test_case_46():
     assert docstring_0.blank_after_long_description is False
     assert docstring_0.meta == []
     assert docstring_0.style == module_1.DocstringStyle.REST
-    str_0 = '\x0b(BH,O4'
+    module_0.compose(var_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_10():
+    str_0 = '{\r itUE\t@C'
+    str_1 = '\x0bPMHyg^#3ZlK\x0b?aml'
+    docstring_0 = module_0.parse(str_1)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 'PMHyg^#3ZlK\x0b?aml'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    module_0.compose(str_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_11():
+    int_0 = 1537
+    module_0.compose(int_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_12():
+    str_0 = 'kj_#f\n"\x0b#wL'
+    module_0.compose(str_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_13():
+    var_0 = module_3.currentframe()
+    module_0.parse(var_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_14():
+    none_type_0 = None
+    module_0.compose(none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_15():
+    str_0 = '6Y_'
+    module_0.compose(str_0, str_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_16():
+    str_0 = '-'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == '-'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    list_0 = [str_0, str_0, str_0]
+    str_1 = 'L3Fw7G\r,.'
+    docstring_1 = module_0.parse(str_1)
+    assert docstring_1.short_description == 'L3Fw7G\r,.'
+    var_0 = module_5.maybe(*list_0)
+    docstring_2 = module_0.parse(str_0)
+    assert docstring_2.short_description == '-'
+    var_1 = var_0.__ne__(str_0)
+    var_1.visit_YieldFrom(str_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_17():
+    str_0 = '\x0c}y'
+    none_type_0 = None
+    var_0 = module_3.trace(str_0)
+    var_0.__getitem__(none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_18():
+    str_0 = ''
+    docstring_0 = module_0.parse(str_0)
     docstring_1 = module_0.parse(str_0)
+    docstring_2 = module_0.parse(str_0)
+    str_1 = module_0.compose(docstring_0)
+    assert str_1 == ''
+    docstring_0.splitlines()
+
+@pytest.mark.xfail(strict=True)
+def test_case_19():
+    none_type_0 = None
+    var_0 = module_3.isgenerator(none_type_0)
+    docstring_0 = module_0.parse(var_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description is None
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    docstring_1 = module_0.parse(var_0)
+    none_type_1 = None
+    str_0 = '\r\x0cRd#B+cu1o'
+    var_1 = module_3.isasyncgen(str_0)
+    var_1.visit_AsyncWith(none_type_1)
+
+@pytest.mark.xfail(strict=True)
+def test_case_20():
+    str_0 = ', optional'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == ', optional'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    str_1 = 'lf?XYr'
+    docstring_1 = module_0.parse(str_1)
+    assert docstring_1.short_description == 'lf?XYr'
+    str_2 = module_0.compose(docstring_0)
+    assert str_2 == ', optional'
+    str_3 = module_0.compose(docstring_1)
+    assert str_3 == 'lf?XYr'
+    docstring_2 = module_0.parse(str_0)
+    assert docstring_2.short_description == ', optional'
+    none_type_0 = None
+    var_0 = module_3.getdoc(str_2)
+    var_1 = var_0.format_map(none_type_0)
+    var_1.replace(annotation=docstring_2)
+
+@pytest.mark.xfail(strict=True)
+def test_case_21():
+    str_0 = 'PP(bp\x0bZ\r0l@Si'
+    module_0.compose(str_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_22():
+    none_type_0 = None
+    str_0 = 'v(sKn'
+    str_1 = 'n_%"e?v2%cnH96]E:Vy'
+    docstring_0 = module_0.parse(str_1)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 'n_%"e?v2%cnH96]E:Vy'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    str_2 = '0oa\x0b3]5\\S@Z&'
+    docstring_1 = module_0.parse(str_2)
+    assert docstring_1.short_description == '0oa\x0b3]5\\S@Z&'
+    str_3 = 'j;k=bc|(\r'
+    docstring_2 = module_0.parse(str_3)
+    assert docstring_2.short_description == 'j;k=bc|(\r'
+    docstring_3 = module_0.parse(str_0)
+    assert docstring_3.short_description == 'v(sKn'
+    docstring_4 = module_0.parse(str_0)
+    assert docstring_4.short_description == 'v(sKn'
+    var_0 = module_3.isframe(none_type_0)
+    var_0.__iter__()
+
+@pytest.mark.xfail(strict=True)
+def test_case_23():
+    str_0 = 'Q_T?nfC\t}#7B;Enu'
+    var_0 = module_2.iter_child_nodes(str_0)
+    var_0.visit_arguments(str_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_24():
+    str_0 = '.av\x0c~i|2D\\"\ng2RY~,'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == '.av\x0c~i|2D\\"'
+    assert docstring_0.long_description == 'g2RY~,'
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    str_1 = '2\\;z)w*._\x0c\r1?>'
+    docstring_1 = module_0.parse(str_1)
     assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_1.short_description == '(BH,O4'
+    assert docstring_1.short_description == '2\\;z)w*._\x0c\r1?>'
     assert docstring_1.long_description is None
     assert docstring_1.blank_after_short_description is False
     assert docstring_1.blank_after_long_description is False
     assert docstring_1.meta == []
     assert docstring_1.style == module_1.DocstringStyle.REST
-    module_0.compose(var_0)
+    var_0 = module_4.template(str_0)
+    var_0.__bool__()
 
-@pytest.mark.xfail(strict=True)
-def test_case_47():
-    str_0 = 'O!5kAC3t=\x0b_v4y\tf'
+def test_case_25():
+    str_0 = 'BJ3jXj=`\\ww<8Ce+9e'
     docstring_0 = module_0.parse(str_0)
     assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'O!5kAC3t=\x0b_v4y  f'
+    assert docstring_0.short_description == 'BJ3jXj=`\\ww<8Ce+9e'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    str_1 = ',FR7'
+    docstring_1 = module_0.parse(str_1)
+    assert docstring_1.short_description == ',FR7'
+
+def test_case_26():
+    str_0 = 'Expected one or no arguments for a '
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 'Expected one or no arguments for a '
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+
+@pytest.mark.xfail(strict=True)
+def test_case_27():
+    var_0 = module_5.maybe()
+    module_0.compose(var_0, var_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_28():
+    none_type_0 = None
+    docstring_0 = module_0.parse(none_type_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description is None
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    var_0 = module_3.getmodule(none_type_0)
+    module_0.compose(var_0, none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_29():
+    str_0 = 'arg'
+    none_type_0 = None
+    module_3.walktree(none_type_0, str_0, str_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_30():
+    str_0 = 's?5Wnn!3}8)Dyk0mT22W'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 's?5Wnn!3}8)Dyk0mT22W'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    str_1 = module_0.compose(docstring_0)
+    assert str_1 == 's?5Wnn!3}8)Dyk0mT22W'
+    docstring_1 = module_0.parse(str_0)
+    assert docstring_1.short_description == 's?5Wnn!3}8)Dyk0mT22W'
+    module_0.parse(docstring_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_31():
+    str_0 = 'p'
+    none_type_0 = None
+    docstring_0 = module_0.parse(none_type_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description is None
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    docstring_1 = module_0.parse(str_0)
+    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_1.short_description == 'p'
+    assert docstring_1.long_description is None
+    assert docstring_1.blank_after_short_description is False
+    assert docstring_1.blank_after_long_description is False
+    assert docstring_1.meta == []
+    assert docstring_1.style == module_1.DocstringStyle.REST
+    tuple_0 = ()
+    docstring_2 = module_0.parse(tuple_0)
+    str_1 = module_0.compose(docstring_2)
+    assert str_1 == ''
+    docstring_3 = module_0.parse(str_1)
+    module_0.compose(tuple_0, docstring_2)
+
+@pytest.mark.xfail(strict=True)
+def test_case_32():
+    none_type_0 = None
+    var_0 = module_3.iscode(none_type_0)
+    var_1 = var_0.__int__()
+    var_2 = var_1.__hash__()
+    var_2.__iter__()
+
+@pytest.mark.xfail(strict=True)
+def test_case_33():
+    str_0 = ''
+    docstring_0 = module_0.parse(str_0)
+    str_1 = ''
+    str_2 = "ekLLxI\x0c;[og|$NUZ'0"
+    str_3 = module_0.compose(docstring_0, indent=str_2)
+    assert str_3 == ''
+    none_type_0 = None
+    var_0 = module_3.getinnerframes(str_1)
+    var_1 = var_0.__lt__(none_type_0)
+    var_0.zfill(none_type_0)
+
+def test_case_34():
+    none_type_0 = None
+    with pytest.raises(TypeError):
+        module_3.getclosurevars(none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_35():
+    str_0 = 'ij0-o+!<HsZXy~+$'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 'ij0-o+!<HsZXy~+$'
     assert docstring_0.long_description is None
     assert docstring_0.blank_after_short_description is False
     assert docstring_0.blank_after_long_description is False
     assert docstring_0.meta == []
     assert docstring_0.style == module_1.DocstringStyle.REST
     none_type_0 = None
-    module_2.indentsize(none_type_0)
+    var_0 = module_3.ismemberdescriptor(none_type_0)
+    docstring_1 = module_0.parse(var_0)
+    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_1.short_description is None
+    assert docstring_1.long_description is None
+    assert docstring_1.blank_after_short_description is False
+    assert docstring_1.blank_after_long_description is False
+    assert docstring_1.meta == []
+    assert docstring_1.style == module_1.DocstringStyle.REST
+    var_0.__getitem__(str_0)
 
 @pytest.mark.xfail(strict=True)
-def test_case_48():
-    set_0 = set()
-    var_0 = module_4.generate_tokens(set_0)
-    module_0.compose(var_0)
-
-def test_case_49():
-    str_0 = 'JD%E&a:rl>z|iT*'
+def test_case_36():
+    none_type_0 = None
+    str_0 = '$+4Vx&\x0c'
     docstring_0 = module_0.parse(str_0)
     assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'JD%E&a:rl>z|iT*'
+    assert docstring_0.short_description == '$+4Vx&\x0c'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    docstring_1 = module_0.parse(none_type_0)
+    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_1.short_description is None
+    assert docstring_1.long_description is None
+    assert docstring_1.blank_after_short_description is False
+    assert docstring_1.blank_after_long_description is False
+    assert docstring_1.meta == []
+    assert docstring_1.style == module_1.DocstringStyle.REST
+    docstring_2 = module_0.parse(none_type_0)
+    module_0.compose(none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_37():
+    none_type_0 = None
+    module_0.compose(none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_38():
+    none_type_0 = None
+    var_0 = module_3.isasyncgenfunction(none_type_0)
+    var_0.__reversed__()
+
+def test_case_39():
+    str_0 = '\\u'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == '\\u'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    none_type_0 = None
+    with pytest.raises(TypeError):
+        module_3.getfullargspec(none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_40():
+    str_0 = 'receives'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 'receives'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    str_1 = '2>2RFd:ar<|\x0c@7'
+    var_0 = module_3.isasyncgen(str_1)
+    module_0.compose(var_0, var_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_41():
+    none_type_0 = None
+    var_0 = module_3.ismemberdescriptor(none_type_0)
+    var_0.visit_AsyncFunctionDef(none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_42():
+    str_0 = "5y'"
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == "5y'"
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    l_shift_0 = module_2.LShift()
+    module_0.parse(l_shift_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_43():
+    var_0 = module_3.stack()
+    none_type_0 = None
+    var_1 = module_3.isabstract(none_type_0)
+    module_3.findsource(var_1)
+
+@pytest.mark.xfail(strict=True)
+def test_case_44():
+    str_0 = 'returns'
+    var_0 = module_3.iscode(str_0)
+    var_0.apply_defaults()
+
+@pytest.mark.xfail(strict=True)
+def test_case_45():
+    none_type_0 = None
+    var_0 = module_3.ismethoddescriptor(none_type_0)
+    module_0.compose(none_type_0, none_type_0, var_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_46():
+    str_0 = '3f$E.<AEb'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == '3f$E.<AEb'
     assert docstring_0.long_description is None
     assert docstring_0.blank_after_short_description is False
     assert docstring_0.blank_after_long_description is False
     assert docstring_0.meta == []
     assert docstring_0.style == module_1.DocstringStyle.REST
     docstring_1 = module_0.parse(str_0)
-    assert docstring_1.short_description == 'JD%E&a:rl>z|iT*'
-    str_1 = module_0.compose(docstring_1, str_0)
-    assert str_1 == 'JD%E&a:rl>z|iT*'
-    str_2 = module_0.compose(docstring_1, docstring_1)
-    assert str_2 == 'JD%E&a:rl>z|iT*'
-    with pytest.raises(TypeError):
-        module_2.getgeneratorlocals(str_0)
+    assert docstring_1.short_description == '3f$E.<AEb'
+    none_type_0 = None
+    docstring_2 = module_0.parse(none_type_0)
+    assert f'{type(docstring_2).__module__}.{type(docstring_2).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_2.short_description is None
+    assert docstring_2.long_description is None
+    assert docstring_2.blank_after_short_description is False
+    assert docstring_2.blank_after_long_description is False
+    assert docstring_2.meta == []
+    assert docstring_2.style == module_1.DocstringStyle.REST
+    docstring_3 = module_0.parse(str_0)
+    assert docstring_3.short_description == '3f$E.<AEb'
+    docstring_4 = module_0.parse(str_0)
+    assert docstring_4.short_description == '3f$E.<AEb'
+    var_0 = module_3.trace(docstring_0)
+    str_1 = "OWnD'R&].\ru"
+    docstring_5 = module_0.parse(str_1)
+    assert docstring_5.short_description == "OWnD'R&].\ru"
+    str_2 = module_0.compose(docstring_4)
+    assert str_2 == '3f$E.<AEb'
+    var_1 = var_0.__eq__(docstring_3)
+    module_0.compose(var_0, var_1, docstring_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_47():
+    none_type_0 = None
+    module_0.compose(none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_48():
+    none_type_0 = None
+    module_4.escape(none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_49():
+    str_0 = 'Parameters'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 'Parameters'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_1.DocstringStyle.REST
+    module_0.compose(str_0, str_0)

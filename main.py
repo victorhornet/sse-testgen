@@ -2,6 +2,7 @@ import json
 import os
 import argparse
 from pathlib import Path
+import random
 import subprocess
 import time
 from typing import Optional
@@ -50,17 +51,20 @@ def main():
             results_dir.mkdir(parents=True)
 
         energy_bridge_runner.start(results_file=results_dir / "usage_metrics.csv")
-
+        projects = os.listdir("examples")
+        random.shuffle(projects)
         # Recursively traverse "examples" for all .py files
-        for project_name in os.listdir("examples"):
+        for project_name in projects:
             if project_name in excluded_projects:
                 continue
             if len(allowed_projects) > 0 and project_name not in allowed_projects:
                 continue
             project_path = Path("examples") / project_name
+
             for root, _, files in os.walk(project_path):
                 if "tests" in Path(root).parts:
                     continue
+                random.shuffle(files)
                 for file_name in files:
                     excluded_files = {
                         "__init__.py",
