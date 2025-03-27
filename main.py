@@ -21,32 +21,18 @@ PYNGUIN_EXECUTABLE = os.getenv(
 )
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Run Pynguin test generation with various configurations"
-    )
-    parser.add_argument(
-        "--allowed-projects",
-        type=str,
-        help="Comma-separated list of allowed projects",
-    )
-
-    args = parser.parse_args()
-
-    allowed_projects: set[str] = (
-        set(args.allowed_projects.split(",")) if args.allowed_projects else set()
-    )
-    excluded_projects = {
-        "tests",
-    }
-
-    energy_bridge_runner = EnergiBridgeRunner()
-
+def run_experiments(
+    energy_bridge_runner: EnergiBridgeRunner,
+    allowed_projects: set[str] = set(),
+    excluded_projects: set[str] = set(),
+    iteration: int = 0,
+):
     with open("pynguin_configs.json", "r") as f:
         configs = json.load(f)
 
+    random.shuffle(configs)
     for config in configs:
-        results_dir = Path.cwd() / "results" / config["name"]
+        results_dir = Path.cwd() / "results" / config["name"] / f"iteration_{iteration}"
         if not results_dir.exists():
             results_dir.mkdir(parents=True)
 
@@ -91,20 +77,6 @@ def main():
                             / f"{config['name']}.txt",
                         )
 
-        # # For checking individual packages without running the whole project
-        # sty_dir = os.path.join("examples", "isort")
-        # for file_name in os.listdir(sty_dir):
-        #     if file_name.endswith(".py") and file_name != "__init__.py":
-        #         # Remove the .py extension
-        #         base_name = os.path.splitext(file_name)[0]
-        #         # Use a dotted module name: sty.<filename>
-        #         module_name = f"isort.{base_name}"
-        #         run_pynguin(
-        #             module_name,
-        #             config["params"],
-        #             log_file_path=Path(module_name) / Path(f"{config['name']}.txt"),
-        #         )
-
         energy, duration = energy_bridge_runner.stop()
         if energy is None or duration is None:
             raise RuntimeError("Energy or duration is None")
@@ -120,8 +92,42 @@ def main():
                 indent=4,
             )
 
-        # TODO: idk if this is a good way to prevent the bias
-        time.sleep(5)
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Run Pynguin test generation with various configurations"
+    )
+    parser.add_argument(
+        "--allowed-projects",
+        type=str,
+        help="Comma-separated list of allowed projects",
+    )
+    parser.add_argument(
+        "--iterations",
+        type=int,
+        help="Number of iterations to run",
+        default=1,
+    )
+
+    args = parser.parse_args()
+
+    allowed_projects: set[str] = (
+        set(args.allowed_projects.split(",")) if args.allowed_projects else set()
+    )
+    excluded_projects = {
+        "tests",
+    }
+    energy_bridge_runner = EnergiBridgeRunner()
+
+    for iteration in range(args.iterations):
+        run_experiments(
+            energy_bridge_runner=energy_bridge_runner,
+            allowed_projects=allowed_projects,
+            excluded_projects=excluded_projects,
+            iteration=iteration,
+        )
+
+        time.sleep(10)
 
 
 def run_pynguin(

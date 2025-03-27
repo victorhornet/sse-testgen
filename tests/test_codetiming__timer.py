@@ -22,8 +22,8 @@ def test_case_1():
     assert module_0.Timer.text == 'Elapsed time: {:0.4f} seconds'
     none_type_0 = timer_0.start()
     float_0 = timer_0.stop()
-    assert float_0 == pytest.approx(8.720799996808637e-05, abs=0.01, rel=0.01)
-    assert timer_0.last == pytest.approx(8.720799996808637e-05, abs=0.01, rel=0.01)
+    assert float_0 == pytest.approx(8.09589996606519e-05, abs=0.01, rel=0.01)
+    assert timer_0.last == pytest.approx(8.09589996606519e-05, abs=0.01, rel=0.01)
     with pytest.raises(module_0.TimerError):
         timer_0.stop()
 
