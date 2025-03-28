@@ -2,41 +2,108 @@
 # Please check them before you use them.
 import pytest
 import codetiming._timer as module_0
-import dataclasses as module_1
+import collections as module_1
 
 def test_case_0():
     timer_0 = module_0.Timer()
     assert timer_0.text == 'Elapsed time: {:0.4f} seconds'
+    assert len(module_0.Timer.timers) == 1
     assert module_0.Timer.text == 'Elapsed time: {:0.4f} seconds'
     timer_1 = timer_0.__enter__()
     assert f'{type(timer_1).__module__}.{type(timer_1).__qualname__}' == 'codetiming._timer.Timer'
     assert timer_1.name is None
     assert timer_1.text == 'Elapsed time: {:0.4f} seconds'
-    var_0 = timer_0.__eq__(timer_0)
     with pytest.raises(module_0.TimerError):
         timer_0.start()
 
 def test_case_1():
     timer_0 = module_0.Timer()
     assert timer_0.text == 'Elapsed time: {:0.4f} seconds'
+    assert len(module_0.Timer.timers) == 1
     assert module_0.Timer.text == 'Elapsed time: {:0.4f} seconds'
     none_type_0 = timer_0.start()
-    float_0 = timer_0.stop()
-    assert float_0 == pytest.approx(8.09589996606519e-05, abs=0.01, rel=0.01)
-    assert timer_0.last == pytest.approx(8.09589996606519e-05, abs=0.01, rel=0.01)
+
+def test_case_2():
+    timer_0 = module_0.Timer()
+    assert timer_0.text == 'Elapsed time: {:0.4f} seconds'
+    assert len(module_0.Timer.timers) == 1
+    assert module_0.Timer.text == 'Elapsed time: {:0.4f} seconds'
+    timer_1 = timer_0.__enter__()
+    assert f'{type(timer_1).__module__}.{type(timer_1).__qualname__}' == 'codetiming._timer.Timer'
+    assert timer_1.name is None
+    assert timer_1.text == 'Elapsed time: {:0.4f} seconds'
+    none_type_0 = timer_0.__exit__()
+    assert timer_0.last == pytest.approx(0.00015017899931990542, abs=0.01, rel=0.01)
+    assert timer_1.last == pytest.approx(0.00015017899931990542, abs=0.01, rel=0.01)
+
+def test_case_3():
+    timer_error_0 = module_0.TimerError()
+    none_type_0 = None
+    timer_0 = module_0.Timer(logger=none_type_0)
+    assert timer_0.text == 'Elapsed time: {:0.4f} seconds'
+    assert len(module_0.Timer.timers) == 1
+    assert module_0.Timer.text == 'Elapsed time: {:0.4f} seconds'
+    timer_1 = timer_0.__enter__()
+    assert f'{type(timer_1).__module__}.{type(timer_1).__qualname__}' == 'codetiming._timer.Timer'
+    assert timer_1.name is None
+    assert timer_1.text == 'Elapsed time: {:0.4f} seconds'
+    assert timer_1.logger is None
+    str_0 = 'sp*u-H~6j=X*N[k]Np]'
+    timer_error_1 = module_0.TimerError()
+    none_type_1 = None
+    str_1 = 'tE'
+    dict_0 = {str_0: none_type_1, str_1: none_type_1, str_1: none_type_1}
+    none_type_2 = timer_0.__exit__()
+    assert timer_0.last == pytest.approx(0.0004271520010661334, abs=0.01, rel=0.01)
+    assert timer_1.last == pytest.approx(0.0004271520010661334, abs=0.01, rel=0.01)
+    user_dict_0 = module_1.UserDict(**dict_0)
+    var_0 = timer_0.__repr__()
+    assert var_0 == "Timer(name=None, text='Elapsed time: {:0.4f} seconds', logger=None)"
+    var_1 = user_dict_0.values()
     with pytest.raises(module_0.TimerError):
         timer_0.stop()
 
-@pytest.mark.xfail(strict=True)
-def test_case_2():
-    none_type_0 = None
-    var_0 = module_1.field(default=none_type_0, hash=none_type_0, kw_only=none_type_0)
-    var_0.__enter__()
+def test_case_4():
+    timer_error_0 = module_0.TimerError()
+    str_0 = 'f!s\x0cPl=#/z\r['
+    timer_0 = module_0.Timer(str_0)
+    assert timer_0.text == 'Elapsed time: {:0.4f} seconds'
+    assert len(module_0.Timer.timers) == 1
+    assert module_0.Timer.text == 'Elapsed time: {:0.4f} seconds'
+    timer_1 = timer_0.__enter__()
+    assert f'{type(timer_1).__module__}.{type(timer_1).__qualname__}' == 'codetiming._timer.Timer'
+    assert timer_1.name == 'f!s\x0cPl=#/z\r['
+    assert timer_1.text == 'Elapsed time: {:0.4f} seconds'
+    float_0 = timer_0.stop()
+    assert float_0 == pytest.approx(0.00014200899749994278, abs=0.01, rel=0.01)
+    assert timer_0.last == pytest.approx(0.00014200899749994278, abs=0.01, rel=0.01)
+    assert timer_1.last == pytest.approx(0.00014200899749994278, abs=0.01, rel=0.01)
+    timer_2 = timer_0.__enter__()
+    assert timer_2.text == 'Elapsed time: {:0.4f} seconds'
+    assert timer_2.last == pytest.approx(0.00014200899749994278, abs=0.01, rel=0.01)
+    with pytest.raises(module_0.TimerError):
+        timer_0.start()
 
-@pytest.mark.xfail(strict=True)
-def test_case_3():
+def test_case_5():
     timer_0 = module_0.Timer()
     assert timer_0.text == 'Elapsed time: {:0.4f} seconds'
-    assert len(module_0.Timer.timers) == 0
+    assert len(module_0.Timer.timers) == 1
     assert module_0.Timer.text == 'Elapsed time: {:0.4f} seconds'
-    timer_0.__exit__()
+    with pytest.raises(module_0.TimerError):
+        timer_0.stop()
+
+def test_case_6():
+    timer_0 = module_0.Timer()
+    assert timer_0.text == 'Elapsed time: {:0.4f} seconds'
+    assert len(module_0.Timer.timers) == 1
+    assert module_0.Timer.text == 'Elapsed time: {:0.4f} seconds'
+
+def test_case_7():
+    timer_0 = module_0.Timer()
+    assert timer_0.text == 'Elapsed time: {:0.4f} seconds'
+    assert len(module_0.Timer.timers) == 1
+    assert module_0.Timer.text == 'Elapsed time: {:0.4f} seconds'
+    timer_1 = timer_0.__enter__()
+    assert f'{type(timer_1).__module__}.{type(timer_1).__qualname__}' == 'codetiming._timer.Timer'
+    assert timer_1.name is None
+    assert timer_1.text == 'Elapsed time: {:0.4f} seconds'

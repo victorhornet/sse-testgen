@@ -2,212 +2,171 @@
 # Please check them before you use them.
 import pytest
 import docstring_parser.google as module_0
-import inspect as module_1
-import collections as module_2
-import docstring_parser.common as module_3
-import tokenize as module_4
-import re as module_5
-import ast as module_6
+import re as module_1
+import inspect as module_2
+import tokenize as module_3
+import docstring_parser.common as module_4
+import ast as module_5
+import collections as module_6
+import token as module_7
 
 @pytest.mark.xfail(strict=True)
 def test_case_0():
-    module_0.Section()
+    section_type_0 = module_0.SectionType.SINGULAR
+    none_type_0 = None
+    module_1.compile(none_type_0, section_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_1():
-    str_0 = 'YQocc[T'
-    dict_0 = {str_0: str_0, str_0: str_0, str_0: str_0, str_0: str_0}
-    var_0 = module_1.isframe(dict_0)
-    str_1 = 'Expected paramenter name.'
-    module_0.compose(var_0, indent=str_1)
+    module_0.SectionBase()
 
 @pytest.mark.xfail(strict=True)
 def test_case_2():
-    module_0.Section()
+    module_0.SectionBase()
 
 @pytest.mark.xfail(strict=True)
 def test_case_3():
-    module_0.Section()
+    bytes_0 = b'\xcet\xa0\x1ap\x82'
+    var_0 = module_2.isasyncgenfunction(bytes_0)
+    module_0.compose(var_0, var_0)
 
-@pytest.mark.xfail(strict=True)
 def test_case_4():
-    module_0.Section()
+    section_type_0 = module_0.SectionType.SINGULAR
+    with pytest.raises(TypeError):
+        module_2.getclosurevars(section_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_5():
-    list_0 = []
-    module_1.getargspec(list_0)
+    section_type_0 = module_0.SectionType.MULTIPLE
+    module_3.tokenize(section_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_6():
-    section_type_0 = module_0.SectionType.MULTIPLE
-    var_0 = module_1.ismethoddescriptor(section_type_0)
-    var_0.zfill(section_type_0)
+    module_0.SectionBase()
 
 @pytest.mark.xfail(strict=True)
 def test_case_7():
-    google_parser_0 = module_0.GoogleParser()
-    assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
-    assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
-    assert len(google_parser_0.sections) == 12
-    assert google_parser_0.title_colon is True
-    assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
-    module_0.parse(google_parser_0)
+    str_0 = 'Warnings'
+    none_type_0 = None
+    str_1 = '*x'
+    dict_0 = {str_0: none_type_0, str_1: none_type_0}
+    module_0.Section(**dict_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_8():
-    section_type_0 = module_0.SectionType.SINGULAR_OR_MULTIPLE
-    user_string_0 = module_2.UserString(section_type_0)
-    assert len(user_string_0) == 32
-    var_0 = user_string_0.__getnewargs__()
-    var_0.reverse()
+    google_parser_0 = module_0.GoogleParser()
+    assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
+    assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
+    assert len(google_parser_0.sections) == 12
+    assert google_parser_0.title_colon is True
+    assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
+    google_parser_0.parse(google_parser_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_9():
-    str_0 = 'Args'
     none_type_0 = None
-    signature_0 = module_1.Signature(none_type_0, return_annotation=str_0)
-    var_0 = signature_0.__repr__()
-    var_1 = signature_0.bind()
-    var_2 = var_0.__getnewargs__()
-    module_0.compose(var_2, indent=var_0)
+    module_0.compose(none_type_0, none_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_10():
-    module_0.SectionBase()
-
-@pytest.mark.xfail(strict=True)
-def test_case_11():
-    google_parser_0 = module_0.GoogleParser()
+    str_0 = '_!\tR\r5)Aq9:38NWMB'
+    google_parser_0 = module_0.GoogleParser(title_colon=str_0)
     assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
     assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
     assert len(google_parser_0.sections) == 12
-    assert google_parser_0.title_colon is True
+    assert google_parser_0.title_colon == '_!\tR\r5)Aq9:38NWMB'
     assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
-    none_type_0 = None
-    var_0 = module_1.unwrap(none_type_0)
-    var_0.__reduce__()
-
-@pytest.mark.xfail(strict=True)
-def test_case_12():
-    module_0.Section()
-
-@pytest.mark.xfail(strict=True)
-def test_case_13():
-    none_type_0 = None
-    docstring_0 = module_0.parse(none_type_0)
+    docstring_0 = module_0.parse(str_0)
     assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description is None
+    assert docstring_0.short_description == '_!      R\r5)Aq9:38NWMB'
     assert docstring_0.long_description is None
     assert docstring_0.blank_after_short_description is False
     assert docstring_0.blank_after_long_description is False
     assert docstring_0.meta == []
-    assert docstring_0.style == module_3.DocstringStyle.GOOGLE
-    section_type_0 = module_0.SectionType.SINGULAR
-    docstring_1 = module_0.parse(section_type_0)
-    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_1.short_description is None
-    assert docstring_1.long_description is None
-    assert docstring_1.blank_after_short_description is False
-    assert docstring_1.blank_after_long_description is False
-    assert docstring_1.meta == []
-    assert docstring_1.style == module_3.DocstringStyle.GOOGLE
-    var_0 = module_1.iscoroutinefunction(section_type_0)
-    module_1.getsourcefile(docstring_1)
-
-@pytest.mark.xfail(strict=True)
-def test_case_14():
-    none_type_0 = None
-    var_0 = module_1.isframe(none_type_0)
-    var_0.__reduce__()
-
-@pytest.mark.xfail(strict=True)
-def test_case_15():
-    module_0.Section()
-
-@pytest.mark.xfail(strict=True)
-def test_case_16():
-    module_0.SectionBase()
-
-@pytest.mark.xfail(strict=True)
-def test_case_17():
-    google_parser_0 = module_0.GoogleParser()
-    assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
-    assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
-    assert len(google_parser_0.sections) == 12
-    assert google_parser_0.title_colon is True
-    assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
+    assert docstring_0.style == module_4.DocstringStyle.GOOGLE
     module_0.parse(google_parser_0)
 
 @pytest.mark.xfail(strict=True)
+def test_case_11():
+    str_0 = '8 :B^A'
+    str_1 = 'examples'
+    str_2 = 'uV/77=:F<*('
+    dict_0 = {str_0: str_0, str_0: str_0, str_1: str_0, str_2: str_2}
+    module_0.Section(**dict_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_12():
+    none_type_0 = None
+    module_0.Section(*none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_13():
+    module_0.SectionBase()
+
+@pytest.mark.xfail(strict=True)
+def test_case_14():
+    str_0 = 'Setup sections.\n\n        :param sections: Recognized sections or None to defaults.\n        '
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 'Setup sections.'
+    assert docstring_0.long_description == ':param sections: Recognized sections or None to defaults.'
+    assert docstring_0.blank_after_short_description is True
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_4.DocstringStyle.GOOGLE
+    str_1 = module_0.compose(docstring_0)
+    assert str_1 == 'Setup sections.\n\n:param sections: Recognized sections or None to defaults.'
+    none_type_0 = None
+    module_0.Section(**none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_15():
+    module_0.SectionBase()
+
+@pytest.mark.xfail(strict=True)
+def test_case_16():
+    module_0.Section()
+
+@pytest.mark.xfail(strict=True)
+def test_case_17():
+    str_0 = 'Yields'
+    none_type_0 = None
+    module_2.formatargvalues(str_0, none_type_0, none_type_0, str_0, formatvarargs=none_type_0)
+
 def test_case_18():
-    section_type_0 = module_0.SectionType.SINGULAR
-    list_0 = [section_type_0, section_type_0, section_type_0]
-    module_0.SectionBase(*list_0)
+    none_type_0 = None
+    google_parser_0 = module_0.GoogleParser(title_colon=none_type_0)
+    assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
+    assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
+    assert len(google_parser_0.sections) == 12
+    assert google_parser_0.title_colon is None
+    assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
+    with pytest.raises(TypeError):
+        module_2.getfullargspec(none_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_19():
-    section_type_0 = module_0.SectionType.SINGULAR
-    section_type_1 = module_0.SectionType.MULTIPLE
-    var_0 = module_1.isfunction(section_type_0)
-    var_0.visit_Subscript(section_type_1)
+    var_0 = module_2.currentframe()
+    module_0.SectionBase()
 
+@pytest.mark.xfail(strict=True)
 def test_case_20():
-    str_0 = '}A3%\x0bL$$V!5B@oF$a'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == '}A3%\x0bL$$V!5B@oF$a'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_3.DocstringStyle.GOOGLE
+    str_0 = '\n{+AL3Fw7G\r,.[\\'
+    var_0 = module_2.isgeneratorfunction(str_0)
+    var_0.__iand__(str_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_21():
-    module_0.Section()
+    none_type_0 = None
+    module_5.fix_missing_locations(none_type_0)
 
-@pytest.mark.xfail(strict=True)
 def test_case_22():
-    module_0.Section()
+    none_type_0 = None
+    with pytest.raises(TypeError):
+        module_2.getcallargs(none_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_23():
-    module_0.Section()
-
-@pytest.mark.xfail(strict=True)
-def test_case_24():
-    none_type_0 = None
-    var_0 = module_4.group()
-    var_0.append(none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_25():
-    module_0.Section()
-
-@pytest.mark.xfail(strict=True)
-def test_case_26():
-    section_type_0 = module_0.SectionType.MULTIPLE
-    module_0.compose(section_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_27():
-    none_type_0 = None
-    module_0.compose(none_type_0, indent=none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_28():
-    str_0 = 'kim\x0b'
-    user_string_0 = module_2.UserString(str_0)
-    none_type_0 = None
-    module_5.escape(none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_29():
-    module_0.Section()
-
-@pytest.mark.xfail(strict=True)
-def test_case_30():
     none_type_0 = None
     google_parser_0 = module_0.GoogleParser(none_type_0)
     assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
@@ -215,155 +174,204 @@ def test_case_30():
     assert len(google_parser_0.sections) == 12
     assert google_parser_0.title_colon is True
     assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
-    module_0.Section()
+    module_0.SectionBase()
 
 @pytest.mark.xfail(strict=True)
-def test_case_31():
-    google_parser_0 = module_0.GoogleParser()
-    assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
-    assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
-    assert len(google_parser_0.sections) == 12
-    assert google_parser_0.title_colon is True
-    assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
-    google_parser_1 = module_0.GoogleParser()
-    var_0 = module_1.getcoroutinelocals(google_parser_1)
-    module_0.compose(var_0, var_0, var_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_32():
-    none_type_0 = None
-    module_6.fix_missing_locations(none_type_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_33():
-    float_0 = 1741.532
-    module_0.parse(float_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_34():
-    none_type_0 = None
-    list_0 = [none_type_0, none_type_0, none_type_0, none_type_0]
-    module_0.SectionBase(*list_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_35():
-    module_0.Section()
-
-@pytest.mark.xfail(strict=True)
-def test_case_36():
-    section_type_0 = module_0.SectionType.SINGULAR
-    str_0 = ' #f%\\-\x0c&w"bu/f\x0bEG-'
-    var_0 = module_1.isframe(section_type_0)
-    var_0.visit_Global(str_0)
-
-@pytest.mark.xfail(strict=True)
-def test_case_37():
-    str_0 = 'xm^.'
-    none_type_0 = None
+def test_case_24():
+    str_0 = 'g-p2WOjSXq#@rowW0`\\'
     docstring_0 = module_0.parse(str_0)
     assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == 'xm^.'
+    assert docstring_0.short_description == 'g-p2WOjSXq#@rowW0`\\'
     assert docstring_0.long_description is None
     assert docstring_0.blank_after_short_description is False
     assert docstring_0.blank_after_long_description is False
     assert docstring_0.meta == []
-    assert docstring_0.style == module_3.DocstringStyle.GOOGLE
-    module_1.stack(none_type_0)
+    assert docstring_0.style == module_4.DocstringStyle.GOOGLE
+    var_0 = module_2.isasyncgenfunction(docstring_0)
+    google_parser_0 = module_0.GoogleParser()
+    docstring_1 = google_parser_0.parse(str_0)
+    assert docstring_1.short_description == 'g-p2WOjSXq#@rowW0`\\'
+    var_0.add_whitespace(str_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_25():
+    module_0.SectionBase()
+
+@pytest.mark.xfail(strict=True)
+def test_case_26():
+    module_0.SectionBase()
+
+@pytest.mark.xfail(strict=True)
+def test_case_27():
+    str_0 = 'J'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 'J'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_4.DocstringStyle.GOOGLE
+    none_type_0 = None
+    docstring_1 = module_0.parse(none_type_0)
+    assert f'{type(docstring_1).__module__}.{type(docstring_1).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_1.short_description is None
+    assert docstring_1.long_description is None
+    assert docstring_1.blank_after_short_description is False
+    assert docstring_1.blank_after_long_description is False
+    assert docstring_1.meta == []
+    assert docstring_1.style == module_4.DocstringStyle.GOOGLE
+    var_0 = module_2.trace()
+    var_0.visit_If(none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_28():
+    str_0 = 'Related'
+    none_type_0 = None
+    str_1 = 'title key type'
+    dict_0 = {str_0: none_type_0, str_1: none_type_0, str_0: none_type_0}
+    user_dict_0 = module_6.UserDict(**dict_0)
+    var_0 = user_dict_0.__len__()
+    var_0.__reversed__()
+
+@pytest.mark.xfail(strict=True)
+def test_case_29():
+    none_type_0 = None
+    module_1.fullmatch(none_type_0, none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_30():
+    module_0.SectionBase()
+
+@pytest.mark.xfail(strict=True)
+def test_case_31():
+    module_0.SectionBase()
+
+@pytest.mark.xfail(strict=True)
+def test_case_32():
+    str_0 = '%h>71JA[#'
+    str_1 = 'return'
+    dict_0 = {str_0: str_0, str_1: str_1}
+    module_0.Section(**dict_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_33():
+    var_0 = module_2.stack()
+    module_0.compose(var_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_34():
+    module_0.Section()
+
+@pytest.mark.xfail(strict=True)
+def test_case_35():
+    str_0 = '/3\x0bBKZ'
+    none_type_0 = None
+    var_0 = module_2.unwrap(str_0)
+    var_1 = var_0.islower()
+    var_1.delimit_if(none_type_0, none_type_0, none_type_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_36():
+    str_0 = 'A1kzt@!52X02~\\'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 'A1kzt@!52X02~\\'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_4.DocstringStyle.GOOGLE
+    module_0.Section()
+
+@pytest.mark.xfail(strict=True)
+def test_case_37():
+    none_type_0 = None
+    module_1.escape(none_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_38():
-    google_parser_0 = module_0.GoogleParser()
-    assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
-    assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
-    assert len(google_parser_0.sections) == 12
-    assert google_parser_0.title_colon is True
-    assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
-    none_type_0 = None
-    module_6.literal_eval(none_type_0)
+    str_0 = '{'
+    module_7.ISTERMINAL(str_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_39():
-    none_type_0 = None
-    module_1.signature(none_type_0, follow_wrapped=none_type_0, eval_str=none_type_0)
+    str_0 = '7uG*|)!'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == '7uG*|)!'
+    assert docstring_0.long_description is None
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_4.DocstringStyle.GOOGLE
+    module_3.untokenize(str_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_40():
-    bool_0 = False
-    var_0 = module_1.iscoroutinefunction(bool_0)
-    var_0.isdigit()
+    google_parser_0 = module_0.GoogleParser()
+    assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
+    assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
+    assert len(google_parser_0.sections) == 12
+    assert google_parser_0.title_colon is True
+    assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
+    module_0.SectionBase()
 
 @pytest.mark.xfail(strict=True)
 def test_case_41():
-    dict_0 = {}
-    module_0.SectionBase(**dict_0)
+    str_0 = ''
+    var_0 = module_2.formatannotation(str_0)
+    var_0.isdisjoint(str_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_42():
+    bool_0 = True
     google_parser_0 = module_0.GoogleParser()
     assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
     assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
     assert len(google_parser_0.sections) == 12
     assert google_parser_0.title_colon is True
     assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
-    google_parser_0.add_section(google_parser_0)
+    module_3.untokenize(bool_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_43():
-    google_parser_0 = module_0.GoogleParser()
-    assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
-    assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
-    assert len(google_parser_0.sections) == 12
-    assert google_parser_0.title_colon is True
-    assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
-    module_0.SectionBase()
+    float_0 = 2348.6
+    module_2.getgeneratorstate(float_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_44():
-    module_0.SectionBase()
+    str_0 = 'Ny};*^V\nef&69'
+    docstring_0 = module_0.parse(str_0)
+    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
+    assert docstring_0.short_description == 'Ny};*^V'
+    assert docstring_0.long_description == 'ef&69'
+    assert docstring_0.blank_after_short_description is False
+    assert docstring_0.blank_after_long_description is False
+    assert docstring_0.meta == []
+    assert docstring_0.style == module_4.DocstringStyle.GOOGLE
+    module_0.Section()
 
 @pytest.mark.xfail(strict=True)
 def test_case_45():
-    str_0 = 'Y\nH:SHL^HEuK\\PM'
-    module_5.split(str_0, str_0, str_0)
+    module_0.SectionBase()
 
 @pytest.mark.xfail(strict=True)
 def test_case_46():
     none_type_0 = None
-    module_1.getargvalues(none_type_0)
+    module_2.findsource(none_type_0)
 
+@pytest.mark.xfail(strict=True)
 def test_case_47():
-    str_0 = '{\x0cv]:R{WnUJ'
-    docstring_0 = module_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == '{\x0cv]:R{WnUJ'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_3.DocstringStyle.GOOGLE
-    with pytest.raises(TypeError):
-        module_1.getargs(str_0)
+    none_type_0 = None
+    module_0.compose(none_type_0, none_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_48():
-    google_parser_0 = module_0.GoogleParser()
-    assert f'{type(google_parser_0).__module__}.{type(google_parser_0).__qualname__}' == 'docstring_parser.google.GoogleParser'
-    assert f'{type(google_parser_0.sections).__module__}.{type(google_parser_0.sections).__qualname__}' == 'builtins.dict'
-    assert len(google_parser_0.sections) == 12
-    assert google_parser_0.title_colon is True
-    assert f'{type(google_parser_0.titles_re).__module__}.{type(google_parser_0.titles_re).__qualname__}' == 're.Pattern'
     section_type_0 = module_0.SectionType.SINGULAR_OR_MULTIPLE
-    str_0 = '#} Nged2gjI#'
-    docstring_0 = google_parser_0.parse(str_0)
-    assert f'{type(docstring_0).__module__}.{type(docstring_0).__qualname__}' == 'docstring_parser.common.Docstring'
-    assert docstring_0.short_description == '#} Nged2gjI#'
-    assert docstring_0.long_description is None
-    assert docstring_0.blank_after_short_description is False
-    assert docstring_0.blank_after_long_description is False
-    assert docstring_0.meta == []
-    assert docstring_0.style == module_3.DocstringStyle.GOOGLE
-    module_0.GoogleParser(section_type_0)
+    module_5.unparse(section_type_0)
 
-@pytest.mark.xfail(strict=True)
 def test_case_49():
-    module_0.SectionBase()
+    none_type_0 = None
+    with pytest.raises(TypeError):
+        module_2.getargs(none_type_0)
