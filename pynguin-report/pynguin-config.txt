@@ -7,17 +7,17 @@
  "'MUTATION_ANALYSIS'>, allow_stale_assertions=False, "
  'mutation_strategy=<MutationStrategy.FIRST_ORDER_MUTANTS: '
  "'FIRST_ORDER_MUTANTS'>, mutation_order=1, post_process=True, "
- 'float_precision=0.01, format_with_black=False), '
- "algorithm=<Algorithm.DYNAMOSA: 'DYNAMOSA'>, "
+ 'float_precision=0.01, format_with_black=False), algorithm=<Algorithm.MIO: '
+ "'MIO'>, "
  "statistics_output=StatisticsOutputConfiguration(report_dir='pynguin-report', "
  "statistics_backend=<StatisticsBackend.CSV: 'CSV'>, "
  'timeline_interval=1000000000, timeline_interpolation=True, '
  "coverage_metrics=[<CoverageMetric.BRANCH: 'BRANCH'>], "
  "output_variables=[TargetModule, Coverage], configuration_id='', run_id='', "
  "project_name='', create_coverage_report=False, type_guess_top_n=10), "
- 'stopping=StoppingConfiguration(maximum_search_time=1, '
- 'maximum_test_executions=1, maximum_statement_executions=1, '
- 'maximum_slicing_time=600, maximum_iterations=1, '
+ 'stopping=StoppingConfiguration(maximum_search_time=-1, '
+ 'maximum_test_executions=-1, maximum_statement_executions=-1, '
+ 'maximum_slicing_time=600, maximum_iterations=-1, '
  'maximum_test_execution_timeout=5, maximum_coverage=100, '
  'maximum_coverage_plateau=-1, minimum_coverage=100, '
  'minimum_plateau_iterations=-1, test_execution_time_per_statement=1), '
