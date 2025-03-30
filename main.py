@@ -75,6 +75,7 @@ def run_experiments(
                             log_file_path=project_name
                             / Path(module_name.replace(".", "/"))
                             / f"{config['name']}.txt",
+                            iteration=iteration,
                         )
 
         energy, duration = energy_bridge_runner.stop()
@@ -135,6 +136,7 @@ def run_pynguin(
     module_name: str,
     params: dict[str, str] = {},
     log_file_path: Optional[Path] = None,
+    iteration: int = 0,
 ):
     """Runs Pynguin test generation for the given module name.
 
@@ -148,6 +150,15 @@ def run_pynguin(
         Path.cwd() / "logs" / (log_file_path or f"{project_name}/{module_name}.txt")
     )
     log_file_path.parent.mkdir(parents=True, exist_ok=True)
+    algorithm_name = params.get("algorithm", "default")
+    report_dir = (
+        Path("pynguin-report")
+        / algorithm_name
+        / f"iteration_{iteration}"
+        / project_name
+        / module_name
+    )
+    report_dir.mkdir(parents=True, exist_ok=True)
     print(f"Running Pynguin on {module_name} with params {params}")
     try:
         with open(log_file_path, "w") as log_file:
@@ -155,6 +166,8 @@ def run_pynguin(
                 [
                     PYNGUIN_EXECUTABLE,
                     "--no-rich",
+                    "--report-dir",
+                    Path("/app/pynguin-report") / project_name / module_name,
                     "--project-path",
                     Path("/input") / project_name,
                     "--module-name",
