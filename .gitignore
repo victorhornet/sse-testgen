@@ -16,3 +16,5 @@ wheels/
 logs/
 
 results/rename.py
+
+.DS_Store
