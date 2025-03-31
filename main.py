@@ -152,13 +152,9 @@ def run_pynguin(
     log_file_path.parent.mkdir(parents=True, exist_ok=True)
     algorithm_name = params.get("algorithm", "default")
     report_dir = (
-        Path("pynguin-report")
-        / algorithm_name
-        / f"iteration_{iteration}"
-        / project_name
-        / module_name
+        Path(algorithm_name) / f"iteration_{iteration}" / project_name / module_name
     )
-    report_dir.mkdir(parents=True, exist_ok=True)
+    (Path("pynguin-report") / report_dir).mkdir(parents=True, exist_ok=True)
     print(f"Running Pynguin on {module_name} with params {params}")
     try:
         with open(log_file_path, "w") as log_file:
@@ -167,7 +163,7 @@ def run_pynguin(
                     PYNGUIN_EXECUTABLE,
                     "--no-rich",
                     "--report-dir",
-                    Path("/app/pynguin-report") / project_name / module_name,
+                    Path("/app/pynguin-report") / report_dir,
                     "--project-path",
                     Path("/input") / project_name,
                     "--module-name",
