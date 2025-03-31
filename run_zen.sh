@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Check if the script is being run as root
-if [ "$EUID" -ne 0 ]; then
-    echo "Please run this script as root"
-    exit 1
-fi
-
 # Confirm that the user is on macOS
 echo -n "Are you running this script on macOS? (y/N): "
 read -r macoscheck

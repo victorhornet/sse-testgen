@@ -2,147 +2,133 @@
 # Please check them before you use them.
 import pytest
 import codetiming._timers as module_0
-import statistics as module_1
 
 def test_case_0():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    none_type_0 = timers_0.clear()
 
-@pytest.mark.xfail(strict=True)
 def test_case_1():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    bool_0 = True
-    timers_0.min(bool_0)
+    float_0 = 2049.916267325092
+    none_type_0 = timers_0.add(float_0, float_0)
+    assert len(timers_0) == 1
+    float_1 = timers_0.min(float_0)
+    assert float_1 == pytest.approx(2049.916267325092, abs=0.01, rel=0.01)
 
-@pytest.mark.xfail(strict=True)
 def test_case_2():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    timers_0.add(timers_0, timers_0)
+    str_0 = 'seconds'
+    with pytest.raises(KeyError):
+        timers_0.apply(timers_0, str_0)
 
 def test_case_3():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    none_type_0 = timers_0.clear()
+    none_type_0 = None
+    int_0 = -342
+    none_type_1 = timers_0.add(none_type_0, int_0)
+    assert len(timers_0) == 1
+    float_0 = timers_0.max(none_type_0)
+    assert float_0 == -342
 
 def test_case_4():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    none_type_0 = None
-    with pytest.raises(TypeError):
-        timers_0.__setitem__(timers_0, none_type_0)
+    str_0 = 'h"c$?z}!Wdp'
+    bool_0 = True
+    none_type_0 = timers_0.add(str_0, bool_0)
+    assert len(timers_0) == 1
+    float_0 = timers_0.mean(str_0)
+    assert float_0 == 1
 
-@pytest.mark.xfail(strict=True)
 def test_case_5():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    str_0 = 'd{e1JkDRQ+0!11n'
-    timers_0.total(str_0)
+    str_0 = "$does notsupprt ier assinment?MUse '.ad()' to update vaues."
+    bool_0 = True
+    none_type_0 = timers_0.add(str_0, bool_0)
+    assert len(timers_0) == 1
+    float_0 = timers_0.median(str_0)
+    assert float_0 is True
 
-@pytest.mark.xfail(strict=True)
 def test_case_6():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    str_0 = 'r"'
-    timers_0.mean(str_0)
+    str_0 = "\\='GJLwPtSOi>n"
+    float_0 = 83.025
+    none_type_0 = timers_0.add(str_0, float_0)
+    assert len(timers_0) == 1
+    none_type_1 = timers_0.add(str_0, float_0)
+    float_1 = timers_0.stdev(str_0)
+    assert float_1 == pytest.approx(0.0, abs=0.01, rel=0.01)
 
-@pytest.mark.xfail(strict=True)
 def test_case_7():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    str_0 = '0s .KMP!3NtbR'
-    timers_0.median(str_0)
+    none_type_0 = None
+    int_0 = 2
+    none_type_1 = timers_0.add(none_type_0, int_0)
+    assert len(timers_0) == 1
+    float_0 = timers_0.stdev(none_type_0)
 
-@pytest.mark.xfail(strict=True)
 def test_case_8():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    var_0 = timers_0.keys()
-    assert len(var_0) == 0
-    str_0 = '{PU\x0c@(g#zXp_N\x0bGR(f5'
-    timers_0.count(str_0)
+    none_type_0 = None
+    with pytest.raises(KeyError):
+        timers_0.stdev(none_type_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_9():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    none_type_0 = None
-    timers_0.max(none_type_0)
+    timers_0.add(timers_0, timers_0)
 
 def test_case_10():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    str_0 = 'D'
-    with pytest.raises(KeyError):
-        timers_0.stdev(str_0)
+    none_type_0 = timers_0.clear()
 
+@pytest.mark.xfail(strict=True)
 def test_case_11():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    str_0 = '\x0cn}:<oR7x$\tL;|X^'
-    int_0 = -47
-    none_type_0 = timers_0.add(str_0, int_0)
-    assert len(timers_0) == 1
-    float_0 = timers_0.stdev(str_0)
-    float_1 = timers_0.min(str_0)
-    assert float_1 == -47
+    timers_0.__setitem__(timers_0, timers_0)
 
+@pytest.mark.xfail(strict=True)
 def test_case_12():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    str_0 = '\x0cn}:<oR7x$\tL;|X^'
-    bool_0 = False
-    none_type_0 = timers_0.add(str_0, bool_0)
-    assert len(timers_0) == 1
-    float_0 = timers_0.median(str_0)
-    assert float_0 is False
+    timers_0.count(timers_0)
 
+@pytest.mark.xfail(strict=True)
 def test_case_13():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    str_0 = '\x0cn}:<oR7x$\tL;|X^'
-    bool_0 = False
-    none_type_0 = timers_0.add(str_0, bool_0)
-    assert len(timers_0) == 1
-    float_0 = timers_0.mean(str_0)
-    assert float_0 == 0
+    timers_0.total(timers_0)
 
+@pytest.mark.xfail(strict=True)
 def test_case_14():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    str_0 = '\x0cn}:<oR7x$\tL;|X^'
-    int_0 = -30
-    none_type_0 = timers_0.add(str_0, int_0)
-    assert len(timers_0) == 1
-    float_0 = timers_0.min(str_0)
-    assert float_0 == -30
+    timers_0.min(timers_0)
 
 @pytest.mark.xfail(strict=True)
 def test_case_15():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    str_0 = '\x0cn}:<oR7x$\tL;|X^'
-    int_0 = -47
-    none_type_0 = timers_0.add(str_0, int_0)
-    assert len(timers_0) == 1
-    bool_0 = True
-    none_type_1 = timers_0.add(str_0, bool_0)
-    float_0 = timers_0.stdev(str_0)
-    assert float_0 == pytest.approx(33.94112549695428, abs=0.01, rel=0.01)
-    float_1 = timers_0.mean(str_0)
-    assert float_1 == -23
-    float_2 = timers_0.min(str_0)
-    assert float_2 == -47
-    module_1.variance(bool_0)
+    timers_0.max(timers_0)
 
+@pytest.mark.xfail(strict=True)
 def test_case_16():
     timers_0 = module_0.Timers()
     assert len(timers_0) == 0
-    str_0 = '\x0c}<oR7x$\t;|X^'
-    bool_0 = True
-    none_type_0 = timers_0.add(str_0, bool_0)
-    assert len(timers_0) == 1
-    float_0 = timers_0.max(str_0)
-    assert float_0 is True
+    timers_0.mean(timers_0)
+
+@pytest.mark.xfail(strict=True)
+def test_case_17():
+    timers_0 = module_0.Timers()
+    assert len(timers_0) == 0
+    timers_0.median(timers_0)
