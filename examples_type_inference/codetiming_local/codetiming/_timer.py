@@ -9,7 +9,6 @@ import math
 import time
 from contextlib import ContextDecorator
 from dataclasses import dataclass, field
-from typing import Any, Callable, ClassVar, Optional
 
 # Codetiming imports
 from codetiming._timers import Timers
@@ -23,21 +22,21 @@ class TimerError(Exception):
 class Timer(ContextDecorator):
     """Time your code using a class, context manager, or decorator"""
 
-    timers: ClassVar[Timers] = Timers()
-    _start_time: Optional[float] = field(default=None, init=False, repr=False)
-    name: Optional[str] = None
-    text: str = "Elapsed time: {:0.4f} seconds"
-    logger: Optional[Callable[[str], None]] = print
-    last: float = field(default=math.nan, init=False, repr=False)
+    timers = Timers()
+    _start_time = field(default=None, init=False, repr=False)
+    name = None
+    text = "Elapsed time: {:0.4f} seconds"
+    logger = print
+    last = field(default=math.nan, init=False, repr=False)
 
-    def start(self) -> None:
+    def start(self):
         """Start a new timer"""
         if self._start_time is not None:
             raise TimerError("Timer is running. Use .stop() to stop it")
 
         self._start_time = time.perf_counter()
 
-    def stop(self) -> float:
+    def stop(self):
         """Stop the timer, and report the elapsed time"""
         if self._start_time is None:
             raise TimerError("Timer is not running. Use .start() to start it")
@@ -60,11 +59,11 @@ class Timer(ContextDecorator):
 
         return self.last
 
-    def __enter__(self) -> "Timer":
+    def __enter__(self):
         """Start a new timer as a context manager"""
         self.start()
         return self
 
-    def __exit__(self, *exc_info: Any) -> None:
+    def __exit__(self, *exc_info):
         """Stop the context manager timer"""
         self.stop()
