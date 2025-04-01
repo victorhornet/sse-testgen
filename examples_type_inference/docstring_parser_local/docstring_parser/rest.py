@@ -2,7 +2,6 @@
 
 import inspect
 import re
-import typing as T
 
 from .common import (
     PARAM_KEYWORDS,
@@ -18,7 +17,7 @@ from .common import (
 )
 
 
-def _build_meta(args: T.List[str], desc: str) -> DocstringMeta:
+def _build_meta(args, desc):
     key = args[0]
 
     if key in PARAM_KEYWORDS:
@@ -83,7 +82,7 @@ def _build_meta(args: T.List[str], desc: str) -> DocstringMeta:
     return DocstringMeta(args=args, description=desc)
 
 
-def parse(text: str) -> Docstring:
+def parse(text):
     """Parse the ReST-style docstring into its components.
 
     :returns: parsed docstring

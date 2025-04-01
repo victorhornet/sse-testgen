@@ -4,7 +4,7 @@ from docstring_parser.common import Docstring, ParseError
 from docstring_parser.styles import STYLES, Style
 
 
-def parse(text: str, style: Style = Style.auto) -> Docstring:
+def parse(text, style = Style.auto):
     """Parse the docstring into its components.
 
     :param text: docstring text to parse

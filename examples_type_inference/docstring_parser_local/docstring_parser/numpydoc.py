@@ -6,7 +6,6 @@
 import inspect
 import itertools
 import re
-import typing as T
 
 from .common import (
     Docstring,
@@ -18,13 +17,13 @@ from .common import (
 )
 
 
-def _pairwise(iterable: T.Iterable, end=None) -> T.Iterable:
+def _pairwise(iterable, end=None):
     a, b = itertools.tee(iterable)
     next(b, None)
     return itertools.zip_longest(a, b, fillvalue=end)
 
 
-def _clean_str(string: str) -> T.Optional[str]:
+def _clean_str(string):
     string = string.strip()
     if len(string) > 0:
         return string
@@ -55,12 +54,12 @@ class Section:
                 will be the first element of the ``args`` attribute list.
     """
 
-    def __init__(self, title: str, key: str) -> None:
+    def __init__(self, title, key):
         self.title = title
         self.key = key
 
     @property
-    def title_pattern(self) -> str:
+    def title_pattern(self):
         """Regular expression pattern matching this section's header.
 
         This pattern will match this instance's ``title`` attribute in
@@ -68,7 +67,7 @@ class Section:
         """
         return r"^({})\s*?\n{}\s*$".format(self.title, "-" * len(self.title))
 
-    def parse(self, text: str) -> T.Iterable[DocstringMeta]:
+    def parse(self, text):
         """Parse ``DocstringMeta`` objects from the body of this section.
 
         :param text: section body text. Should be cleaned with
@@ -88,10 +87,10 @@ class _KVSection(Section):
             ... multiple lines
     """
 
-    def _parse_item(self, key: str, value: str) -> DocstringMeta:
+    def _parse_item(self, key, value):
         pass
 
-    def parse(self, text: str) -> T.Iterable[DocstringMeta]:
+    def parse(self, text):
         for match, next_match in _pairwise(KV_REGEX.finditer(text)):
             start = match.end()
             end = next_match.start() if next_match is not None else None
@@ -110,7 +109,7 @@ class _SphinxSection(Section):
     """
 
     @property
-    def title_pattern(self) -> str:
+    def title_pattern(self):
         return r"^\.\.\s*({})\s*::".format(self.title)
 
 
@@ -125,7 +124,7 @@ class ParamSection(_KVSection):
             ... multiple lines
     """
 
-    def _parse_item(self, key: str, value: str) -> DocstringParam:
+    def _parse_item(self, key, value):
         m = PARAM_KEY_REGEX.match(key)
         arg_name = type_name = is_optional = None
         if m is not None:
@@ -162,7 +161,7 @@ class RaisesSection(_KVSection):
             A description of what might raise ValueError
     """
 
-    def _parse_item(self, key: str, value: str) -> DocstringRaises:
+    def _parse_item(self, key, value):
         return DocstringRaises(
             args=[self.key, key],
             description=_clean_str(value),
@@ -182,7 +181,7 @@ class ReturnsSection(_KVSection):
 
     is_generator = False
 
-    def _parse_item(self, key: str, value: str) -> DocstringReturns:
+    def _parse_item(self, key, value):
         m = RETURN_KEY_REGEX.match(key)
         if m is not None:
             return_name, type_name = m.group("name"), m.group("type")
@@ -207,7 +206,7 @@ class YieldsSection(ReturnsSection):
 class DeprecationSection(_SphinxSection):
     """Parser for numpydoc "deprecation warning" sections."""
 
-    def parse(self, text: str) -> T.Iterable[DocstringDeprecated]:
+    def parse(self, text):
         version, desc, *_ = text.split(sep="\n", maxsplit=1) + [None, None]
 
         if desc is not None:
@@ -254,7 +253,7 @@ DEFAULT_SECTIONS = [
 
 
 class NumpydocParser:
-    def __init__(self, sections: T.Optional[T.Dict[str, Section]] = None):
+    def __init__(self, sections=None):
         """Setup sections.
 
         :param sections: Recognized sections or None to defaults.
@@ -269,7 +268,7 @@ class NumpydocParser:
             flags=re.M,
         )
 
-    def add_section(self, section: Section):
+    def add_section(self, section):
         """Add or replace a section.
 
         :param section: The new section.
@@ -278,7 +277,7 @@ class NumpydocParser:
         self.sections[section.title] = section
         self._setup()
 
-    def parse(self, text: str) -> Docstring:
+    def parse(self, text):
         """Parse the numpy-style docstring into its components.
 
         :returns: parsed docstring
@@ -323,7 +322,7 @@ class NumpydocParser:
         return ret
 
 
-def parse(text: str) -> Docstring:
+def parse(text):
     """Parse the numpy-style docstring into its components.
 
     :returns: parsed docstring

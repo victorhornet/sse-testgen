@@ -2,7 +2,6 @@
 
 import inspect
 import re
-import typing as T
 from collections import namedtuple
 from enum import IntEnum
 
@@ -58,9 +57,7 @@ DEFAULT_SECTIONS = [
 
 
 class GoogleParser:
-    def __init__(
-        self, sections: T.Optional[T.List[Section]] = None, title_colon=True
-    ):
+    def __init__(self, sections=None, title_colon=True):
         """Setup sections.
 
         :param sections: Recognized sections or None to defaults.
@@ -86,7 +83,7 @@ class GoogleParser:
             flags=re.M,
         )
 
-    def _build_meta(self, text: str, title: str) -> DocstringMeta:
+    def _build_meta(self, text, title) -> DocstringMeta:
         """Build docstring element.
 
         :param text: docstring element text
@@ -113,7 +110,7 @@ class GoogleParser:
 
         return self._build_multi_meta(section, before, desc)
 
-    def _build_single_meta(self, section: Section, desc: str) -> DocstringMeta:
+    def _build_single_meta(self, section, desc) -> DocstringMeta:
         if section.key in RETURNS_KEYWORDS | YIELDS_KEYWORDS:
             return DocstringReturns(
                 args=[section.key],
@@ -129,9 +126,7 @@ class GoogleParser:
             raise ParseError("Expected paramenter name.")
         return DocstringMeta(args=[section.key], description=desc)
 
-    def _build_multi_meta(
-        self, section: Section, before: str, desc: str
-    ) -> DocstringMeta:
+    def _build_multi_meta(self, section, before, desc) -> DocstringMeta:
         if section.key in PARAM_KEYWORDS:
             m = GOOGLE_TYPED_ARG_REGEX.match(before)
             if m:
@@ -172,7 +167,7 @@ class GoogleParser:
             )
         return DocstringMeta(args=[section.key, before], description=desc)
 
-    def add_section(self, section: Section):
+    def add_section(self, section):
         """Add or replace a section.
 
         :param section: The new section.
@@ -181,7 +176,7 @@ class GoogleParser:
         self.sections[section.title] = section
         self._setup()
 
-    def parse(self, text: str) -> Docstring:
+    def parse(self, text) -> Docstring:
         """Parse the Google-style docstring into its components.
 
         :returns: parsed docstring
@@ -264,7 +259,7 @@ class GoogleParser:
         return ret
 
 
-def parse(text: str) -> Docstring:
+def parse(text) -> Docstring:
     """Parse the Google-style docstring into its components.
 
     :returns: parsed docstring
