@@ -9,6 +9,7 @@ docker run ^
     -v "%cd%\tests:/output" ^
     -v "%cd%\pynguin-report:/app/pynguin-report" ^
     pynguin-cli ^
+    --maximum-search-time 600 ^
     --project-path "/input" ^
     --output-path "/output" ^
     --verbose ^

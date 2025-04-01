@@ -14,3 +14,7 @@ wheels/
 .idea
 
 logs/
+
+results/rename.py
+
+.DS_Store

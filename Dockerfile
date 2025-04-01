@@ -31,6 +31,11 @@ COPY pynguin-docker.sh ./
 
 RUN chmod +x pynguin-docker.sh
 
+
+RUN mkdir -p /input /output /app/pynguin-report
+RUN chown -R appuser:appuser /input /output /app/pynguin-report
+RUN chmod -R 755 /input /output /app/pynguin-report
+
 USER appuser
 
 ENTRYPOINT [ "/app/pynguin-docker.sh" ]
