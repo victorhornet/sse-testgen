@@ -27,6 +27,14 @@ def run_experiments(
     excluded_projects: set[str] = set(),
     iteration: int = 0,
 ):
+    """Runs the experiments for the given iteration.
+
+    Args:
+        energy_bridge_runner: The EnergiBridgeRunner instance.
+        allowed_projects: The set of allowed projects. If not empty, only these projects will be run.
+        excluded_projects: The set of excluded projects to skip.
+        iteration: The iteration number.
+    """
     with open("pynguin_configs.json", "r") as f:
         configs = json.load(f)
 
@@ -145,6 +153,7 @@ def run_pynguin(
         module_name: The name of the module to run Pynguin on.
         params: The CLI parameters to pass to Pynguin. Example: {"seed": 42}.
         log_file_path: The path to the log file to pipe the output to. Example: "codetiming_local/codetiming/_timers/mio-42.txt". Default: <project_path>/<module_name>.txt
+        iteration: The iteration number.
     """
     log_file_path = (
         Path.cwd() / "logs" / (log_file_path or f"{project_name}/{module_name}.txt")
@@ -177,7 +186,6 @@ def run_pynguin(
     except subprocess.CalledProcessError as e:
         print(f"Skipping module {module_name} due to error: {e}")
 
-    # print a newline for better readability
     print()
 
 

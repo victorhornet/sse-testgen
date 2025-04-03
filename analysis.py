@@ -31,7 +31,9 @@ def collect_energy_data(results_dir="results", output_dir="jasp"):
             iteration_path = os.path.join(algorithm_path, iteration_folder)
 
             # We only care about folders that look like "Iteration_x"
-            if not os.path.isdir(iteration_path) or not iteration_folder.lower().startswith("iteration_"):
+            if not os.path.isdir(
+                iteration_path
+            ) or not iteration_folder.lower().startswith("iteration_"):
                 continue
 
             # Construct the path to the JSON file
@@ -47,9 +49,11 @@ def collect_energy_data(results_dir="results", output_dir="jasp"):
                 # Create row data for the per-algorithm CSV (excluding "algorithm")
                 row_algo = {
                     "iteration": iteration_index,
-                    "energy_consumption_joules": data.get("energy_consumption_joules", ""),
+                    "energy_consumption_joules": data.get(
+                        "energy_consumption_joules", ""
+                    ),
                     "execution_time_seconds": data.get("execution_time_seconds", ""),
-                    "watts": data.get("watts", "")
+                    "watts": data.get("watts", ""),
                 }
                 aggregated_data.append(row_algo)
 
@@ -57,9 +61,11 @@ def collect_energy_data(results_dir="results", output_dir="jasp"):
                 row_agg = {
                     "algorithm": algorithm,
                     "iteration": iteration_index,
-                    "energy_consumption_joules": data.get("energy_consumption_joules", ""),
+                    "energy_consumption_joules": data.get(
+                        "energy_consumption_joules", ""
+                    ),
                     "execution_time_seconds": data.get("execution_time_seconds", ""),
-                    "watts": data.get("watts", "")
+                    "watts": data.get("watts", ""),
                 }
                 aggregated_all_data.append(row_agg)
 
@@ -69,7 +75,12 @@ def collect_energy_data(results_dir="results", output_dir="jasp"):
             aggregated_data.sort(key=lambda x: int(x["iteration"]))
             csv_filename = os.path.join(output_dir, f"{algorithm}.csv")
             with open(csv_filename, "w", newline="", encoding="utf-8") as csvfile:
-                fieldnames = ["iteration", "energy_consumption_joules", "execution_time_seconds", "watts"]
+                fieldnames = [
+                    "iteration",
+                    "energy_consumption_joules",
+                    "execution_time_seconds",
+                    "watts",
+                ]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writer.writeheader()
                 writer.writerows(aggregated_data)
@@ -83,7 +94,13 @@ def collect_energy_data(results_dir="results", output_dir="jasp"):
         aggregated_all_data.sort(key=lambda x: (x["algorithm"], int(x["iteration"])))
         csv_all_filename = os.path.join(output_dir, "all_algorithms.csv")
         with open(csv_all_filename, "w", newline="", encoding="utf-8") as csvfile:
-            fieldnames = ["algorithm", "iteration", "energy_consumption_joules", "execution_time_seconds", "watts"]
+            fieldnames = [
+                "algorithm",
+                "iteration",
+                "energy_consumption_joules",
+                "execution_time_seconds",
+                "watts",
+            ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(aggregated_all_data)
